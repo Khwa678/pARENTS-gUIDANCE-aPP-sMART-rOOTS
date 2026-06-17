@@ -39,13 +39,22 @@ export default function Assignments() {
     sendTestWhatsApp,
     currentUser,
     reflections,
-    notificationLogs
+    notificationLogs,
+    parents
   } = useApp();
 
   const [activeTab, setActiveTab] = useState<'calendar' | 'streak'>('calendar');
 
+  const checkWeekUnlocked = (m: any) => {
+    if (!m) return false;
+    const activeParent = currentUser?.role === 'parent' 
+      ? (parents?.find(p => p.phone === currentUser.phone) || currentUser)
+      : currentUser;
+    return currentUser?.role === 'admin' || currentUser?.isMentor || (activeParent && (activeParent.unlockedWeeksList || []).includes(m.week));
+  };
+
   // Find active/current week path
-  const activeModuleDefault = modules.find(m => m.unlocked && m.progress < 100) || modules[0];
+  const activeModuleDefault = modules.find(m => checkWeekUnlocked(m) && m.progress < 100) || modules[0];
   const [selectedModuleId, setSelectedModuleId] = useState<string>(activeModuleDefault?.id || 'm2');
   const [selectedDay, setSelectedDay] = useState<number | 'all'>('all');
 
@@ -444,7 +453,7 @@ export default function Assignments() {
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
           {modules.map((m) => {
             const isSelected = m.id === selectedModuleId;
-            const isWeekUnlocked = m.unlocked || (currentUser && currentUser.unlockedWeeksList?.includes(m.week));
+            const isWeekUnlocked = checkWeekUnlocked(m);
             const weekTasksCount = dailyTasks.filter(t => t.moduleId === m.id).length;
             const completedWeekTasks = dailyTasks.filter(t => t.moduleId === m.id && t.completed).length;
             const isWeekCompleted = weekTasksCount > 0 && completedWeekTasks === weekTasksCount;
@@ -501,24 +510,30 @@ export default function Assignments() {
       </section>
 
       {/* COHORT SNAPSHOT & MANUAL WEEK OVERRIDE DISPLAY */}
-      {!currentModule.unlocked ? (
+      {!checkWeekUnlocked(currentModule) ? (
         <Card className="border-2 border-dashed border-stone-200 shadow-md bg-stone-50/80 rounded-[2.5rem] p-8 lg:p-12 text-center max-w-2xl mx-auto space-y-6">
           <div className="w-16 h-16 rounded-full bg-accent-warm/10 text-accent-warm flex items-center justify-center mx-auto shadow-sm">
             <Lock className="w-8 h-8" />
           </div>
           <div className="space-y-2">
-            <h3 className="text-2xl font-serif text-stone-800">Week {currentModule.week} is Locked in Sequence</h3>
+            <h3 className="text-2xl font-serif text-stone-800">Week {currentModule.week} is Locked</h3>
             <p className="text-sm text-stone-550 max-w-md mx-auto leading-relaxed">
-              This module is scheduled to automatically release after Week {currentModule.week - 1} wraps up. 
-              As a parent explorer, you can override this scheduled delay anytime!
+              This module's assignment checklists and learning videos are managed directly by your supervisor.
             </p>
           </div>
-          <Button 
-            onClick={() => handleUnlockWeek(currentModule.id)}
-            className="rounded-2xl bg-accent-sage hover:bg-accent-sage/95 text-stone-900 border border-transparent font-extrabold h-14 px-8 text-xs uppercase tracking-wider shadow-lg shadow-accent-sage/10 cursor-pointer"
-          >
-            <Unlock className="mr-2 w-4.5 h-4.5" /> Unlock Week {currentModule.week} & Tasks Instantly
-          </Button>
+          {currentUser?.role === 'admin' ? (
+            <Button 
+              onClick={() => handleUnlockWeek(currentModule.id)}
+              className="rounded-2xl bg-accent-sage hover:bg-accent-sage/95 text-stone-900 border border-transparent font-extrabold h-14 px-8 text-xs uppercase tracking-wider shadow-lg shadow-accent-sage/10 cursor-pointer mx-auto"
+            >
+              <Unlock className="mr-2 w-4.5 h-4.5" /> Admin Bypass: Unlock Week {currentModule.week} Instantly
+            </Button>
+          ) : (
+            <div className="p-4 bg-amber-50 rounded-2xl border border-amber-200 max-w-sm mx-auto">
+              <p className="text-xs font-bold text-amber-800">🔒 Waiting for Admin Unlock</p>
+              <p className="text-[11px] text-amber-700 mt-1">Your parenting supervisor will grant unlock permissions from the backend when this milestone is reached.</p>
+            </div>
+          )}
         </Card>
       ) : (
         <>

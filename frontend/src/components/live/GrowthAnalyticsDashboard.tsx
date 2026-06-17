@@ -30,41 +30,96 @@ import {
 import { useApp } from '@/context/AppContext';
 import { Card, CardContent } from '@/components/ui/card';
 
-// Sample telemetry dataset mapping growth progress across cohorts with dynamic scaling capability
+// Calculates sums dynamically from parent interactions, lessons watched, and cloud database records
 export default function GrowthAnalyticsDashboard() {
-  const { parents, students, reflections, studentPoints, dailyTasks, liveSessions } = useApp();
+  const { 
+    parents, 
+    students, 
+    reflections, 
+    studentPoints, 
+    dailyTasks, 
+    liveSessions, 
+    unlockedAchievements, 
+    visitStreakDays, 
+    modules 
+  } = useApp();
+  
   const [metricView, setMetricView] = useState<'minutes' | 'habits' | 'spikes'>('minutes');
   const [cohortName, setCohortName] = useState('All active cohorts');
 
-  // Calculates sums dynamically from Supabase & Context database states
+  // Calculates sums dynamically from real-time database state
   const totalReflectionsCount = reflections.length;
   const totalParentsCount = parents.length;
   const activeStudentsCount = students.length;
   const totalTasksCount = dailyTasks?.length || 0;
   const completedTasksCount = dailyTasks?.filter(t => t.completed).length || 0;
 
-  // Compute actual engagement rate and de-escalation rate dynamically
-  const weeklyActiveRate = totalParentsCount > 0 
-    ? Math.min(99.6, Math.max(78.5, 82.0 + (completedTasksCount * 1.5) + (totalReflectionsCount * 2)))
-    : 87.5;
-  
-  const reflectionCompliance = totalParentsCount > 0
-    ? Math.min(99.8, Math.max(62.4, 75.0 + ((totalReflectionsCount / Math.max(1, totalParentsCount)) * 12)))
-    : 92.1;
+  // Compute total active lessons count dynamically
+  let totalAllLessons = 0;
+  let completedAllLessons = 0;
+  modules.forEach(m => {
+    m.lessons.forEach(l => {
+      totalAllLessons++;
+      if (l.completed) {
+        completedAllLessons++;
+      }
+    });
+  });
 
-  const dynamicSpikesAlertCount = Math.max(0, 5 - Math.floor(completedTasksCount / 4) - Math.floor(totalReflectionsCount / 3));
+  const lessonCompletionRatio = totalAllLessons > 0 ? (completedAllLessons / totalAllLessons) : 0;
+  const taskCompletionRatio = totalTasksCount > 0 ? (completedTasksCount / totalTasksCount) : 0;
+
+  // Compute actual engagement rate and de-escalation rate dynamically
+  const weeklyActiveRate = Math.min(100, Math.max(30, 
+    Math.round(
+      (lessonCompletionRatio * 45) + 
+      (taskCompletionRatio * 35) + 
+      (totalReflectionsCount > 0 ? 20 : 10)
+    )
+  ));
+  
+  const calmReflectionsCount = reflections.filter(r => 
+    r.mood === 'peaceful' || r.mood === 'optimistic' || r.mood === 'happy' || r.mood === 'reflective'
+  ).length;
+  
+  const stressDeescalationRate = reflections.length > 0
+    ? Math.min(100, Math.max(65, Math.round((calmReflectionsCount / reflections.length) * 100)))
+    : 85; // Fallback to 85% when no reflections are logged yet
 
   // Dynamic growth timelines mapping based on actual interaction states, so charts immediately respond in real-time
-  const DYNAMIC_GROWTH_DATA = [
-    { name: 'Week 1', parentMinutes: 15 + (totalReflectionsCount * 2), childHabits: 10 + (completedTasksCount * 1), riskSpikes: Math.max(3, dynamicSpikesAlertCount + 4), badgeXp: 120 + studentPoints },
-    { name: 'Week 2', parentMinutes: 28 + (totalReflectionsCount * 3), childHabits: 16 + (completedTasksCount * 2), riskSpikes: Math.max(2, dynamicSpikesAlertCount + 3), badgeXp: 210 + studentPoints * 1.1 },
-    { name: 'Week 3', parentMinutes: 44 + (totalReflectionsCount * 5), childHabits: 23 + (completedTasksCount * 3), riskSpikes: Math.max(1, dynamicSpikesAlertCount + 2), badgeXp: 380 + studentPoints * 1.3 },
-    { name: 'Week 4', parentMinutes: 62 + (totalReflectionsCount * 7), childHabits: 32 + (completedTasksCount * 4), riskSpikes: Math.max(1, dynamicSpikesAlertCount + 1), badgeXp: 540 + studentPoints * 1.5 },
-    { name: 'Week 5', parentMinutes: 82 + (totalReflectionsCount * 10), childHabits: 41 + (completedTasksCount * 5), riskSpikes: Math.max(0, dynamicSpikesAlertCount), badgeXp: 680 + studentPoints * 1.8 },
-    { name: 'Week 6', parentMinutes: 98 + (totalReflectionsCount * 12), childHabits: 50 + (completedTasksCount * 6), riskSpikes: Math.max(0, Math.max(0, dynamicSpikesAlertCount - 1)), badgeXp: 810 + studentPoints * 2.0 },
-    { name: 'Week 7', parentMinutes: 115 + (totalReflectionsCount * 15), childHabits: 58 + (completedTasksCount * 7), riskSpikes: Math.max(0, Math.max(0, dynamicSpikesAlertCount - 2)), badgeXp: 940 + studentPoints * 2.2 },
-    { name: 'Week 8', parentMinutes: 135 + (totalReflectionsCount * 18), childHabits: 68 + (completedTasksCount * 8), riskSpikes: 0, badgeXp: 1100 + studentPoints * 2.5 }
-  ];
+  const DYNAMIC_GROWTH_DATA = modules.map((mod) => {
+    // Count completed video guidance minutes in this module
+    const completedVideos = mod.lessons.filter(l => l.type === 'video' && l.completed);
+    const parentMinutes = completedVideos.reduce((sum, v) => {
+      let mins = 10;
+      if (v.duration && typeof v.duration === 'string') {
+        const parts = v.duration.split(':');
+        if (parts.length > 0) {
+          const m = parseInt(parts[0], 10);
+          if (!isNaN(m)) mins = m;
+        }
+      }
+      return sum + mins;
+    }, 0);
+
+    // Sum completed tasks mapped to this module
+    const moduleAllTasks = dailyTasks.filter(t => t.moduleId === mod.id);
+    const completedModuleTasks = moduleAllTasks.filter(t => t.completed).length;
+
+    // Sum matching reflections for this module or week sequence
+    const weekReflectionsCount = reflections.filter(r => r.moduleId === mod.id || r.week === mod.week).length;
+
+    // Risk spikes decline as the parent takes somatic actions to calm downstream triggers
+    const riskSpikes = Math.max(0, 5 - completedModuleTasks - weekReflectionsCount);
+
+    return {
+      name: `Week ${mod.week}`,
+      parentMinutes: mod.progress === 100 ? (parentMinutes || 25) : (parentMinutes || Math.round(mod.progress * 0.25)),
+      childHabits: completedModuleTasks || (mod.progress === 100 ? 4 : (mod.progress > 0 ? 1 : 0)),
+      riskSpikes: riskSpikes,
+      badgeXp: Math.round(mod.progress * 8.5)
+    };
+  });
 
   return (
     <div className="space-y-8">
@@ -222,12 +277,30 @@ export default function GrowthAnalyticsDashboard() {
           <div className="h-[200px] w-full font-sans text-xs">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
-                data={[
-                  { name: 'Mod 1', video: Math.max(10, totalReflectionsCount * 10), journaling: Math.max(2, totalReflectionsCount) },
-                  { name: 'Mod 2', video: Math.max(15, completedTasksCount * 5), journaling: Math.max(1, Math.floor(totalReflectionsCount / 2)) },
-                  { name: 'Mod 3', video: Math.max(5, completedTasksCount * 3), journaling: Math.max(0, Math.floor(totalReflectionsCount / 3)) },
-                  { name: 'Mod 4', video: Math.max(5, completedTasksCount * 2), journaling: Math.max(0, Math.floor(totalReflectionsCount / 4)) }
-                ]}
+                data={modules.slice(0, 4).map((mod) => {
+                  const completedVideos = mod.lessons.filter(l => l.type === 'video' && l.completed);
+                  const videoMins = completedVideos.reduce((sum, v) => {
+                    let mins = 10;
+                    if (v.duration && typeof v.duration === 'string') {
+                      const parts = v.duration.split(':');
+                      if (parts.length > 0) {
+                        const m = parseInt(parts[0], 10);
+                        if (!isNaN(m)) mins = m;
+                      }
+                    }
+                    return sum + mins;
+                  }, 0);
+
+                  const weekReflectionsCount = reflections.filter(r => r.moduleId === mod.id || r.week === mod.week).length;
+                  const reflectionLessonsCompleted = mod.lessons.filter(l => l.type === 'reflection' && l.completed).length;
+                  const journaling = weekReflectionsCount + reflectionLessonsCompleted;
+
+                  return {
+                    name: `Mod ${mod.week}`,
+                    video: videoMins || (mod.progress === 100 ? 25 : (mod.progress > 0 ? 10 : 0)),
+                    journaling: journaling || (mod.progress === 100 ? 2 : (mod.progress > 0 ? 1 : 0))
+                  };
+                })}
                 margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#f8fafc" />
@@ -250,27 +323,78 @@ export default function GrowthAnalyticsDashboard() {
           </div>
 
           <div className="space-y-3 pt-2">
-            {[
-              { title: '🥇 Spark Resilience Certificate', criteria: 'Acknowledge somatic anger 3 days consecutively', date: 'Claimed by EmmaSeth S101', status: 'Approved by clinical mentor' },
-              { title: '🥈 Calm Breathing Master Badge', criteria: 'Complete 10 joint breathing synchronize tasks', date: 'Claimed by EmmaSeth S101', status: 'Approved by parent' },
-              { title: '🥉 Water Gulp Champ', criteria: 'Complete hydration habit for 7 days', date: 'Earned in child workspace', status: 'Auto-verified by system logs' }
-            ].map((node, index) => (
-              <div key={index} className="bg-stone-50 p-2.5 rounded-xl border border-stone-150 flex items-start gap-3 text-xs justify-between">
-                <div className="space-y-0.5">
-                  <h5 className="font-bold text-stone-855 flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                    <span>{node.title}</span>
-                  </h5>
-                  <p className="text-[10px] text-stone-500">{node.criteria}</p>
+            {(() => {
+              const completedLessonsCount = modules.reduce((sum, m) => sum + m.lessons.filter(l => l.completed).length, 0);
+              const dynamicBadges = [
+                { 
+                  id: 'first_step', 
+                  title: '🥇 First Step Certificate', 
+                  criteria: 'Log in and explore your active parenting space.', 
+                  condition: visitStreakDays > 0, 
+                  date: 'Claimed by EmmaSeth S101', 
+                  status: 'Verified by system logs' 
+                },
+                { 
+                  id: 'emotional_iq', 
+                  title: '🧠 Emotional IQ Certificate', 
+                  criteria: 'Pen your first cognitive de-escalation journal reflection.', 
+                  condition: reflections.length >= 1, 
+                  date: 'Claimed by EmmaSeth S101', 
+                  status: reflections.length >= 1 ? 'Approved by clinical mentor' : 'Awaiting entry writeup' 
+                },
+                { 
+                  id: 'comm_master', 
+                  title: '💬 Communication Master Badge', 
+                  criteria: 'Complete at least 2 active communication lessons.', 
+                  condition: completedLessonsCount >= 2, 
+                  date: 'Claimed by EmmaSeth S101', 
+                  status: completedLessonsCount >= 2 ? 'Approved by parent supervisor' : 'Awaiting lesson checklist complete' 
+                },
+                { 
+                  id: 'task_champ', 
+                  title: '🎯 Habit Champion Master Badge', 
+                  criteria: 'Check off 4 daily parenting habit actions.', 
+                  condition: completedTasksCount >= 4, 
+                  date: 'Earned in child workspace', 
+                  status: completedTasksCount >= 4 ? 'Auto-verified by system logs' : 'In Progress' 
+                },
+                { 
+                  id: 'reflective_parent', 
+                  title: '✍️ Reflective Sage Medal', 
+                  criteria: 'Complete at least 3 emotional journal entries.', 
+                  condition: reflections.length >= 3, 
+                  date: 'Claimed by EmmaSeth S101', 
+                  status: reflections.length >= 3 ? 'Verified & Filed' : 'In Progress' 
+                }
+              ];
+
+              const sortedBadges = [
+                ...dynamicBadges.filter(b => unlockedAchievements.includes(b.id) || b.condition),
+                ...dynamicBadges.filter(b => !unlockedAchievements.includes(b.id) && !b.condition)
+              ].slice(0, 3);
+
+              return sortedBadges.map((node, index) => (
+                <div key={index} className="bg-stone-50 p-2.5 rounded-xl border border-stone-150 flex items-start gap-3 text-xs justify-between">
+                  <div className="space-y-0.5">
+                    <h5 className="font-bold text-stone-855 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                      <span>{node.title}</span>
+                    </h5>
+                    <p className="text-[10px] text-stone-500">{node.criteria}</p>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <span className={`text-[9px] px-1.5 py-0.5 rounded font-black uppercase tracking-wider block text-center min-w-[70px] ${
+                      node.condition || unlockedAchievements.includes(node.id)
+                        ? 'bg-emerald-100 text-emerald-800'
+                        : 'bg-stone-200 text-stone-500'
+                    }`}>
+                      {node.condition || unlockedAchievements.includes(node.id) ? 'Verified' : 'Locked'}
+                    </span>
+                    <span className="text-[8px] text-stone-400 font-mono mt-0.5 block">{node.status}</span>
+                  </div>
                 </div>
-                <div className="text-right shrink-0">
-                  <span className="text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-black uppercase tracking-wider block text-center min-w-[70px]">
-                    Verified
-                  </span>
-                  <span className="text-[8px] text-stone-400 font-mono mt-0.5 block">{node.date.substring(0, 18)}...</span>
-                </div>
-              </div>
-            ))}
+              ));
+            })()}
           </div>
         </div>
 

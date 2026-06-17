@@ -57,7 +57,7 @@ const PRESET_TOPICS = [
 ];
 
 export default function Learn() {
-  const { modules, unlockModuleManually, addNewModule, currentUser } = useApp();
+  const { modules, unlockModuleManually, addNewModule, currentUser, parents } = useApp();
   const [showGenerator, setShowGenerator] = React.useState(false);
   const [selectedTopicPreset, setSelectedTopicPreset] = React.useState<string>('sibling-harmony');
   const [customTopicTitle, setCustomTopicTitle] = React.useState<string>('');
@@ -154,7 +154,10 @@ export default function Learn() {
             // Find the target lesson to resume
             const activeLesson = module.lessons.find(l => !l.completed) || module.lessons[0];
             const activeLessonId = activeLesson ? activeLesson.id : 'l1';
-            const isUnlocked = module.unlocked || (currentUser && currentUser.unlockedWeeksList?.includes(module.week));
+            const activeParent = currentUser?.role === 'parent' 
+              ? (parents?.find(p => p.phone === currentUser.phone) || currentUser)
+              : currentUser;
+            const isUnlocked = currentUser?.role === 'admin' || currentUser?.isMentor || (activeParent && (activeParent.unlockedWeeksList || []).includes(module.week));
 
             return (
               <motion.div 
@@ -271,22 +274,33 @@ export default function Learn() {
                             </div>
                          </div>
 
-                         <Button 
-                           onClick={() => {
-                             unlockModuleManually(module.id, true);
-                             import('canvas-confetti').then((m) => {
-                               m.default({
-                                 particleCount: 85,
-                                 spread: 75,
-                                 origin: { y: 0.7 },
-                                 colors: ['#8bad8b', '#d4a373', '#f2e8cf']
+                         {currentUser?.role === 'admin' ? (
+                           <Button 
+                             onClick={() => {
+                               unlockModuleManually(module.id, true);
+                               import('canvas-confetti').then((m) => {
+                                 m.default({
+                                   particleCount: 85,
+                                   spread: 75,
+                                   origin: { y: 0.7 },
+                                   colors: ['#8bad8b', '#d4a373', '#f2e8cf']
+                                 });
                                });
-                             });
-                           }} 
-                           className="w-full rounded-2xl h-12 bg-accent-sage hover:bg-accent-sage/90 text-stone-900 font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md hover:scale-[1.01] transition-all cursor-pointer"
-                         >
-                           🔓 Click to Unlock Week {module.week} Now
-                         </Button>
+                             }} 
+                             className="w-full rounded-2xl h-12 bg-accent-sage hover:bg-accent-sage/90 text-stone-900 font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md hover:scale-[1.01] transition-all cursor-pointer"
+                           >
+                             🔓 Admin Bypass: Unlock Week {module.week}
+                           </Button>
+                         ) : (
+                           <div className="p-4 bg-amber-50/70 rounded-2xl border border-amber-200">
+                             <p className="text-xs font-bold text-amber-800 text-center flex items-center justify-center gap-1.5 font-sans">
+                               🔒 Awaiting Admin Permission
+                             </p>
+                             <p className="text-[11px] text-amber-700 text-center mt-1 leading-relaxed">
+                               This clinical module is currently locked. Your parenting supervisor will unlock it from the admin console when your cohort is ready.
+                             </p>
+                           </div>
+                         )}
 
                          <div className="p-4 bg-accent-warm/5 rounded-2xl border border-accent-warm/10">
                             <p className="text-[11px] text-stone-500 leading-normal">
