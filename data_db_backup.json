@@ -1,0 +1,664 @@
+{
+  "parents": [
+    {
+      "name": "Jane Doe",
+      "phone": "6307686532",
+      "email": "jane.doe@example.com",
+      "studentId": "S101",
+      "studentName": "Little John",
+      "classGrade": "Grade 3",
+      "batchCohort": "Spring 2026",
+      "startDate": "2026-05-18",
+      "password": "password",
+      "unlockedWeeksList": [
+        1,
+        2,
+        7,
+        3,
+        5,
+        4
+      ],
+      "status": "active",
+      "lastLogin": "8:46:22 AM"
+    },
+    {
+      "name": "Robert Smith",
+      "phone": "+98765432",
+      "email": "robert.smith@example.com",
+      "studentId": "S102",
+      "studentName": "Emma Smith",
+      "classGrade": "Grade 1",
+      "batchCohort": "Summer 2026",
+      "password": "password",
+      "startDate": "2026-05-25",
+      "unlockedWeeksList": [
+        1
+      ],
+      "status": "active",
+      "lastLogin": "2026-05-25 11:32 AM"
+    },
+    {
+      "name": "Jane Doe",
+      "phone": "6307686532",
+      "email": "jane.doe@example.com",
+      "studentId": "S103",
+      "studentName": "Aarav",
+      "classGrade": "Grade 5",
+      "batchCohort": "Spring 2026",
+      "startDate": "2026-05-18",
+      "password": "password",
+      "unlockedWeeksList": [
+        1,
+        2,
+        7,
+        3,
+        5,
+        4
+      ],
+      "status": "active",
+      "lastLogin": "2026-05-25 09:15 AM"
+    },
+    {
+      "name": "Parent Beta Two",
+      "phone": "8892085628",
+      "email": "khwahishseth@gmail.com",
+      "studentId": "S104",
+      "studentName": "Karan",
+      "classGrade": "Grade 4",
+      "batchCohort": "Summer 2026",
+      "password": "password",
+      "startDate": "2026-05-25",
+      "unlockedWeeksList": [
+        1
+      ],
+      "status": "active",
+      "lastLogin": "2026-05-25 11:32 AM"
+    },
+    {
+      "name": "Jane Doe",
+      "phone": "+12345678",
+      "email": "jane.doe@example.com",
+      "studentId": "S101",
+      "studentName": "Little John",
+      "classGrade": "Grade 3",
+      "batchCohort": "Spring 2026",
+      "startDate": "2026-05-18",
+      "password": "password",
+      "unlockedWeeksList": [
+        1,
+        2
+      ],
+      "status": "active",
+      "lastLogin": "2026-05-25 09:15 AM"
+    }
+  ],
+  "students": [
+    {
+      "id": "S101",
+      "name": "Little John",
+      "grade": "Grade 3",
+      "assignedParentPhone": "+12345678"
+    },
+    {
+      "id": "S102",
+      "name": "Emma Smith",
+      "grade": "Grade 1",
+      "assignedParentPhone": "+98765432"
+    },
+    {
+      "id": "S103",
+      "name": "Aarav",
+      "grade": "Grade 5",
+      "assignedParentPhone": "6307686532"
+    },
+    {
+      "id": "S104",
+      "name": "Karan",
+      "grade": "Grade 4",
+      "assignedParentPhone": "8892085628"
+    }
+  ],
+  "reflections": [
+    {
+      "id": "ref_1779943749586",
+      "moduleId": "m2",
+      "lessonId": "l2-1",
+      "week": 2,
+      "prompt": "How did you observe your child's natural temperament today? What surprised you?",
+      "entry": "hn",
+      "createdAt": "2026-05-28T04:49:09.586Z",
+      "text": "hn",
+      "date": "2026-05-28"
+    },
+    {
+      "id": "r1",
+      "moduleId": "m1",
+      "lessonId": "l1-3",
+      "week": 1,
+      "prompt": "What did you observe when playing without offering suggestions?",
+      "entry": "I noticed John was far more creative on his own. Usually I say things like \"put that there\", and he stops playing. When I stayed silent, he made a complete space tower with books!",
+      "createdAt": "2026-05-19T10:30:00Z",
+      "notes": "A great lesson in letting go of parental control!",
+      "text": "I noticed John was far more creative on his own. Usually I say things like \"put that there\", and he stops playing. When I stayed silent, he made a complete space tower with books!",
+      "date": "2026-05-19"
+    }
+  ],
+  "daily_tasks": [
+    {
+      "id": "t1-1",
+      "moduleId": "m1",
+      "day": 1,
+      "title": "Observe Temperament Today",
+      "instructions": "Watch how your child responds to quiet play versus high-energy actions. Note down what behaviors feel automatic.",
+      "estimatedTime": "10 mins",
+      "completed": true
+    },
+    {
+      "id": "t1-2",
+      "moduleId": "m1",
+      "day": 2,
+      "title": "Uninterrupted Free-Play",
+      "instructions": "Dedicate 15 minutes of uninterrupted play time where your child takes 100% of the lead roles.",
+      "estimatedTime": "15 mins",
+      "completed": true
+    },
+    {
+      "id": "t1-3",
+      "moduleId": "m1",
+      "day": 3,
+      "title": "Notice Hidden Triggers",
+      "instructions": "Before reacting, observe what physical triggers seem to precede a behavioral shift.",
+      "estimatedTime": "Full Day",
+      "completed": true
+    },
+    {
+      "id": "t2-1",
+      "moduleId": "m2",
+      "day": 1,
+      "title": "10-Minute Pure Listening",
+      "instructions": "Sit close, maintain soft eye level and listen without interrupting or correcting even once.",
+      "estimatedTime": "10 mins",
+      "completed": true,
+      "note": "John was talking excitedly about school."
+    },
+    {
+      "id": "t2-2",
+      "moduleId": "m2",
+      "day": 2,
+      "title": "Practise Validation Statement",
+      "instructions": "When your child expresses disappointment, validate they feel sad before suggesting any solution.",
+      "estimatedTime": "5 mins",
+      "completed": true
+    },
+    {
+      "id": "t2-3",
+      "moduleId": "m2",
+      "day": 3,
+      "title": "Mindful Breathing Practice",
+      "instructions": "Lead a simple, 3-breath co-regulation cycle prior to starting heavy afternoon homework.",
+      "estimatedTime": "3 mins",
+      "completed": true
+    },
+    {
+      "id": "t2-4",
+      "moduleId": "m2",
+      "day": 4,
+      "title": "Positive Reinforcement Praise",
+      "instructions": "Praise a specific action of focus rather than general traits (e.g. \"I love how careful you were colors this\" instead of \"good boy\")",
+      "estimatedTime": "Instant",
+      "completed": true
+    },
+    {
+      "id": "t2-5",
+      "moduleId": "m2",
+      "day": 5,
+      "title": "Active Eye-Level Response",
+      "instructions": "Kneel down or sit so that you are perfectly at eye-level with your child during crucial discussions.",
+      "estimatedTime": "5 mins",
+      "completed": false
+    },
+    {
+      "id": "t2-6",
+      "moduleId": "m2",
+      "day": 6,
+      "title": "Reflection Synthesis",
+      "instructions": "Identify one communication habit you successfully changed today and note its impact.",
+      "estimatedTime": "10 mins",
+      "completed": true
+    },
+    {
+      "id": "t2-7",
+      "moduleId": "m2",
+      "day": 7,
+      "title": "Weekly Growth Summary",
+      "instructions": "Jot down overall behavioral improvements observed during Week 2.",
+      "estimatedTime": "15 mins",
+      "completed": true
+    }
+  ],
+  "live_sessions": [
+    {
+      "id": "stream_1",
+      "title": "Dr. Vance Co-Regulation Masterclass for Busy Parents",
+      "mentorName": "Dr. Alicia Vance",
+      "description": "Learn the critical techniques of the 3-second pause & active neural de-escalation for handling tantrums with love.",
+      "streamUrl": "eabjoioutk",
+      "status": "upcoming",
+      "scheduledTime": "Today around 5:00 PM (IST)",
+      "targetGroup": "parents",
+      "pointsReward": 30
+    },
+    {
+      "id": "stream_2",
+      "title": "Master Chen's Evening Mindful Breathing & Yoga Story Circle",
+      "mentorName": "Master Kenneth Chen",
+      "description": "A playful and relaxing session combining the Forest Tree Pose 🌲 and Balloon Breathing 🎈 to melt away homework static.",
+      "streamUrl": "i0iwga8cbj",
+      "status": "upcoming",
+      "scheduledTime": "Today around 6:30 PM (IST)",
+      "targetGroup": "students",
+      "pointsReward": 25
+    }
+  ],
+  "modules": [
+    {
+      "id": "m1",
+      "title": "Understanding Child Psychology",
+      "description": "Learn the fundamentals of children's psychological stages and natural temperaments.",
+      "week": 1,
+      "unlocked": true,
+      "progress": 100,
+      "lessons": [
+        {
+          "id": "l1-1",
+          "title": "The Developing Brain",
+          "duration": "12:45",
+          "type": "video",
+          "completed": true,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "l1-2",
+          "title": "Temperament vs Behavior",
+          "duration": "08:20",
+          "type": "video",
+          "completed": true,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "l1-3",
+          "title": "Neurological Milestones",
+          "duration": "11:10",
+          "type": "video",
+          "completed": true,
+          "content": "Spend 10 minutes observing your child without guiding them.",
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "title": "Building Communication",
+      "description": "Practical strategies for empathetic listening and empowering speaking.",
+      "week": 2,
+      "unlocked": true,
+      "progress": 100,
+      "lessons": [
+        {
+          "id": "l2-1",
+          "title": "Active Listening Without Interruption",
+          "duration": "10:15",
+          "type": "video",
+          "completed": true,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "l2-2",
+          "title": "The Power of Emotional Validation",
+          "duration": "09:40",
+          "type": "video",
+          "completed": true,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "l2-3",
+          "title": "Arousal and Tone Control",
+          "duration": "12:15",
+          "type": "video",
+          "completed": true,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        }
+      ]
+    },
+    {
+      "id": "m3",
+      "title": "Handling Emotional Outbursts",
+      "description": "Learn how to stay perfectly calm, co-regulate, and handle tantrums with love.",
+      "week": 3,
+      "unlocked": false,
+      "unlockDate": "7 Days from Week 2",
+      "progress": 0,
+      "lessons": [
+        {
+          "id": "l3-1",
+          "title": "Co-regulation Techniques",
+          "duration": "11:20",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "l3-2",
+          "title": "De-escalating the Anger Loop",
+          "duration": "14:15",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "l3-3",
+          "title": "Nervous System Recovery",
+          "duration": "13:05",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        }
+      ]
+    },
+    {
+      "id": "m4",
+      "title": "Positive Reinforcement",
+      "description": "Nurture deep inner-confidence, authentic self-esteem, and positive praise.",
+      "week": 4,
+      "unlocked": false,
+      "progress": 0,
+      "lessons": [
+        {
+          "id": "l4-1",
+          "title": "Intention and Identity Praise",
+          "duration": "10:00",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "l4-2",
+          "title": "Healthy Reward Systems",
+          "duration": "12:30",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "l4-3",
+          "title": "Cultivating Internal Drive",
+          "duration": "09:40",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        }
+      ]
+    },
+    {
+      "id": "m5",
+      "title": "Discipline Without Fear",
+      "description": "How to set clear boundaries and natural consequences with love and consistency.",
+      "week": 5,
+      "unlocked": false,
+      "progress": 0,
+      "lessons": [
+        {
+          "id": "l5-1",
+          "title": "Setting Clean Boundaries",
+          "duration": "12:00",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "l5-2",
+          "title": "Natural Consequences Framework",
+          "duration": "11:45",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "l5-3",
+          "title": "Connection Under Boundary Fatigue",
+          "duration": "10:50",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        }
+      ]
+    },
+    {
+      "id": "m6",
+      "title": "Managing Screen Addiction",
+      "description": "Practical, low-friction steps for setting screen-time boundaries and replacement habits.",
+      "week": 6,
+      "unlocked": false,
+      "progress": 0,
+      "lessons": [
+        {
+          "id": "l6-1",
+          "title": "Replacing Screens with High Connection Play",
+          "duration": "15:30",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "l6-2",
+          "title": "Digital Detox Preparation",
+          "duration": "13:10",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "l6-3",
+          "title": "Co-Regulating High-Stimulus Habits",
+          "duration": "11:20",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        }
+      ]
+    },
+    {
+      "id": "m7",
+      "title": "Emotional Intelligence",
+      "description": "Identifying, naming, and acknowledging emotions together with your child.",
+      "week": 7,
+      "unlocked": false,
+      "progress": 0,
+      "lessons": [
+        {
+          "id": "m7-1",
+          "title": "Emotional Vocabulary Coaching",
+          "duration": "11:15",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "m7-2",
+          "title": "Interpreting Physical Sensations",
+          "duration": "12:40",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "m7-3",
+          "title": "Constructive Discharges",
+          "duration": "09:35",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        }
+      ]
+    },
+    {
+      "id": "m8",
+      "title": "Healthy Routine Building",
+      "description": "Structuring morning and evening rituals to eliminate power struggles.",
+      "week": 8,
+      "unlocked": false,
+      "progress": 0,
+      "lessons": [
+        {
+          "id": "m8-1",
+          "title": "Power-Struggle Free Mornings",
+          "duration": "14:20",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "m8-2",
+          "title": "Evening Wind-Down Hydrations",
+          "duration": "11:55",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        },
+        {
+          "id": "m8-3",
+          "title": "Constructive Habits Tracking",
+          "duration": "10:05",
+          "type": "video",
+          "completed": false,
+          "videoUrl": "https://khwahishseth.wistia.com/folders/wx9zawl1d9"
+        }
+      ]
+    }
+  ],
+  "passwordResetRequests": [],
+  "strictnessLevel": "medium",
+  "tagDatabase": [
+    {
+      "name": "Anger Management",
+      "level": "High Attention",
+      "count": 4,
+      "desc": "Co-regulation guidelines for outbursts"
+    },
+    {
+      "name": "Stress Management",
+      "level": "Medium",
+      "count": 3,
+      "desc": "Somatic anxiety and calming techniques"
+    },
+    {
+      "name": "Focus & Concentration",
+      "level": "Medium",
+      "count": 5,
+      "desc": "Bedtime routines and screen limits"
+    },
+    {
+      "name": "Emotional Intelligence",
+      "level": "High Attention",
+      "count": 4,
+      "desc": "Social-emotional development play"
+    },
+    {
+      "name": "Screen Addiction",
+      "level": "High Attention",
+      "count": 6,
+      "desc": "Digital sandboxes and sleep rules"
+    },
+    {
+      "name": "Anxiety",
+      "level": "High Attention",
+      "count": 3,
+      "desc": "Calm breathing and fear processing"
+    },
+    {
+      "name": "Discipline",
+      "level": "Medium",
+      "count": 2,
+      "desc": "Consistent schedules and respectful parenting"
+    }
+  ],
+  "childProfiles": [
+    {
+      "id": "S101",
+      "name": "Emma Cooper",
+      "age": 7,
+      "grade": "Grade 2",
+      "concerns": [
+        "Anger Management",
+        "Emotional Intelligence"
+      ],
+      "risk": "Excellent",
+      "notes": "Responds beautifully to candle breathing.",
+      "parentPhone": "6307686532"
+    },
+    {
+      "id": "S102",
+      "name": "Noah Miller",
+      "age": 10,
+      "grade": "Grade 4",
+      "concerns": [
+        "Focus & Concentration",
+        "Screen Addiction"
+      ],
+      "risk": "Improving",
+      "notes": "Reducing evening device usage screen-time.",
+      "parentPhone": "+87654321"
+    },
+    {
+      "id": "S103",
+      "name": "Olivia Garcia",
+      "age": 5,
+      "grade": "Kindergarten",
+      "concerns": [
+        "Anxiety"
+      ],
+      "risk": "Attention Risk",
+      "notes": "Needs heavy bedtime somatic co-regulation stories.",
+      "parentPhone": "+11223344"
+    }
+  ],
+  "learningPaths": [
+    {
+      "id": "lp_1",
+      "name": "Anger Co-Regulation Blueprint",
+      "desc": "4-week structured clinical pathway to master trigger control.",
+      "tags": [
+        "Anger Management"
+      ],
+      "weeksCount": 4,
+      "badge": "Peace Ambassador Badge"
+    },
+    {
+      "id": "lp_2",
+      "name": "Mindful Evening Routine Builder",
+      "desc": "3-week screen substitution daily co-regulation path.",
+      "tags": [
+        "Screen Addiction",
+        "Focus & Concentration"
+      ],
+      "weeksCount": 3,
+      "badge": "Somatic Guide Badge"
+    }
+  ],
+  "scoringRules": {
+    "videoWatch90": 10,
+    "weekBonusVideo": 30,
+    "dailyTaskSingle": 5,
+    "dailyTaskAllOfDay": 10,
+    "submitReflection": 5,
+    "streakDailyLogin": 2,
+    "streakSevenDay": 25,
+    "webinarAttend": 20
+  },
+  "unlockDependencies": {
+    "videoComplete90": true,
+    "submitReflection": true,
+    "markSomaticTasks": true,
+    "minimumPoints": true
+  }
+}
