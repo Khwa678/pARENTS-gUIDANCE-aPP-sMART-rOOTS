@@ -123,8 +123,13 @@ export default function Assignments() {
       <section className="space-y-6 pt-6 animate-fade-in">
         <div className="flex items-center justify-between px-1">
           <div className="flex items-center gap-2">
+<<<<<<< HEAD
             <span className="text-xl">📧</span>
             <h3 className="text-xl font-serif text-stone-850">Your Live Outgoing GMail Stream</h3>
+=======
+            <span className="text-xl">📲</span>
+            <h3 className="text-xl font-serif text-stone-850">Your Live Outgoing WhatsApp Stream</h3>
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
           </div>
           <span className="text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-100 font-extrabold px-3 py-1 rounded-full uppercase tracking-wider font-mono">
             Active Connection Direct Links
@@ -133,7 +138,11 @@ export default function Assignments() {
 
         <Card className="border border-stone-200/60 shadow-md rounded-[2.5rem] bg-white p-6 md:p-8 space-y-5">
           <p className="text-xs text-stone-500 max-w-2xl leading-relaxed">
+<<<<<<< HEAD
             Whenever you complete a challenge or milestone, an alert is queued for secure email delivery to <strong className="font-mono text-stone-700 bg-stone-100 px-1.5 py-0.5 rounded">{currentUser?.email || "parent_jane@gmail.com"}</strong> (mirrored to **khwahishseth@gmail.com**). Clinicians approve these dispatches live. Click below to verify or trigger manual sandbox email routing.
+=======
+            Whenever you complete a challenge or milestone, an alert is queued for phone delivery to <strong className="font-mono text-stone-700 bg-stone-100 px-1.5 py-0.5 rounded">{currentUser?.phone || "6307686532"}</strong>. If you are not getting automated alerts on your device, click the green button on any item below to send it instantly via the official WhatsApp chat!
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
           </p>
 
           {notificationLogs.length === 0 ? (
@@ -143,14 +152,23 @@ export default function Assignments() {
           ) : (
             <div className="space-y-4 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
               {notificationLogs.slice(0, 3).map((log) => {
+<<<<<<< HEAD
                 const targetEmail = currentUser?.email || "khwahishseth@gmail.com";
                 const emailSubject = `MindBloom Action: ${log.templateName}`;
                 const emailSimText = `Dear Parent,\n\nWe would like to notify you about your kid's latest milestone: ${log.payload}`;
+=======
+                const targetNo = (currentUser?.phone || "6307686532").replace(/\D/g, "");
+                const waClickUrl = log.waLink || `https://wa.me/${targetNo}?text=${encodeURIComponent(log.payload)}`;
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
                 return (
                   <div key={log.id} className="p-4 rounded-3xl bg-stone-50/50 border border-stone-150 space-y-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 transition-all hover:bg-stone-50">
                     <div className="space-y-1 flex-1">
                       <div className="flex items-center gap-2">
+<<<<<<< HEAD
                         <span className="font-bold text-stone-800 text-xs">{log.templateName || "GMail Milestone Tally"}</span>
+=======
+                        <span className="font-bold text-stone-800 text-xs">{log.templateName}</span>
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
                         <span className="text-[9px] text-stone-400 font-mono">({log.timestamp})</span>
                       </div>
                       <p className="text-[11px] text-stone-500 font-mono bg-white p-3 rounded-xl border border-stone-100 whitespace-pre-wrap leading-relaxed max-h-[80px] overflow-y-auto">
@@ -158,6 +176,7 @@ export default function Assignments() {
                       </p>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
+<<<<<<< HEAD
                       <button
                         onClick={() => {
                           fetch("/api/send-email", {
@@ -183,6 +202,26 @@ export default function Assignments() {
                       >
                         📧 Send Email Log
                       </button>
+=======
+                      <a
+                        href={waClickUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer text-center font-sans"
+                      >
+                        📲 Send Now
+                      </a>
+                      {log.emailPreviewUrl && (
+                        <a
+                          href={log.emailPreviewUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-stone-900 hover:bg-stone-850 text-white font-bold text-[10px] uppercase tracking-wider rounded-xl transition-all shadow-sm cursor-pointer text-center font-mono"
+                        >
+                          📧 Email Sandbox
+                        </a>
+                      )}
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
                     </div>
                   </div>
                 );
@@ -337,6 +376,7 @@ export default function Assignments() {
             <div className="flex items-center gap-4">
               <div className={cn(
                 "w-12 h-12 rounded-2xl flex items-center justify-center text-xl shrink-0 transition-all",
+<<<<<<< HEAD
                 isWhatsAppActive ? "bg-amber-100 text-amber-600 shadow-md shadow-amber-500/10" : "bg-stone-100 text-stone-400"
               )}>
                 📧
@@ -344,6 +384,15 @@ export default function Assignments() {
               <div className="space-y-1 text-left">
                 <div className="flex items-center gap-2 flex-wrap">
                   <h4 className="text-sm font-serif text-stone-900 font-bold">Dynamic GMail Alert Gateway</h4>
+=======
+                isWhatsAppActive ? "bg-emerald-50 text-emerald-600 shadow-md shadow-emerald-500/10" : "bg-stone-100 text-stone-400"
+              )}>
+                📲
+              </div>
+              <div className="space-y-1 text-left">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h4 className="text-sm font-serif text-stone-900 font-bold">Dynamic WhatsApp Push Gateway</h4>
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
                   <span className={cn(
                     "text-[8px] font-mono uppercase font-black tracking-widest px-2 py-0.5 rounded-full",
                     isWhatsAppActive ? "bg-emerald-100 text-emerald-800" : "bg-stone-100 text-stone-500"
@@ -353,8 +402,13 @@ export default function Assignments() {
                 </div>
                 <p className="text-xs text-stone-500 leading-relaxed max-w-xl">
                   {isWhatsAppActive 
+<<<<<<< HEAD
                     ? `Active. Real-time notifications for completed tasks and milestones are bound to send instantly to your email: ${currentUser?.email || 'your_email@gmail.com'}.`
                     : "GMail Notifications are paused. Click below to turn them on inside your Account Preferences."
+=======
+                    ? `Active. Real-time notifications for completed tasks and milestones are bound to send instantly to your phone/email target: ${currentUser?.phone || '+1 555-0199'}.`
+                    : "Notifications are paused. Click below to turn them on inside your Account Preferences."
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
                   }
                 </p>
               </div>
@@ -376,7 +430,11 @@ export default function Assignments() {
                   : "bg-emerald-600 hover:bg-emerald-500 text-white border-transparent"
               )}
             >
+<<<<<<< HEAD
               {isWhatsAppActive ? "⏸ Pause Alerts" : "⚡ Turn GMail ON"}
+=======
+              {isWhatsAppActive ? "⏸ Pause Alerts" : "⚡ Turn WhatsApp ON"}
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
             </Button>
           </Card>
         </motion.div>

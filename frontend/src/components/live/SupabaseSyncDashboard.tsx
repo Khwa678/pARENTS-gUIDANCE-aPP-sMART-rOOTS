@@ -165,7 +165,11 @@ export default function SupabaseSyncDashboard() {
         setSyncStatus('synced');
         let detailStr = '';
         if (data.results) {
+<<<<<<< HEAD
           detailStr = Object.entries(data.results || {})
+=======
+          detailStr = Object.entries(data.results)
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
             .map(([tbl, stats]: any) => `${tbl}: ${stats.success ? '✔ (' + (stats.count || 0) + ' items)' : '✖ (' + (stats.error?.message || 'err') + ')'}`)
             .join(', ');
         }

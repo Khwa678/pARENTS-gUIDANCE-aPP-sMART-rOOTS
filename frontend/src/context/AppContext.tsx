@@ -351,6 +351,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [modules, setModules] = useState<Module[]>(() => {
     try {
       const saved = localStorage.getItem('parent_guidance_modules');
+<<<<<<< HEAD
       if (saved) {
         const parsed = JSON.parse(saved);
         const upgraded = parsed.map((m: any) => {
@@ -388,6 +389,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         localStorage.setItem('parent_guidance_modules', JSON.stringify(upgraded));
         return upgraded;
       }
+=======
+      if (saved) return JSON.parse(saved);
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
     } catch {}
     return MOCK_MODULES;
   });
@@ -669,12 +673,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   });
 
   const [latestEmailPreview, setLatestEmailPreview] = useState('');
+<<<<<<< HEAD
   
   // Dynamic streak days that count only when logged in and are connected to the brownie points (studentPoints)
   const visitStreakDays = currentUser 
     ? Math.max(1, Math.min(15, Math.floor((studentPoints > 0 ? studentPoints : 1250) / 100) + dailyTasks.filter(t => t.completed).length))
     : 0;
 
+=======
+  const [visitStreakDays, setVisitStreakDays] = useState(5);
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
   const [visitStreakDates, setVisitStreakDates] = useState(['2026-06-08', '2026-06-09', '2026-06-10', '2026-06-11', '2026-06-12']);
   const [unlockedAchievements, setUnlockedAchievements] = useState<string[]>(['ach-1', 'ach-2']);
 
@@ -1002,9 +1010,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         unlocked: false,
         progress: 0,
         lessons: [
+<<<<<<< HEAD
           { id: `l${nextWeek}-1`, title: `Somatic foundations for: ${titleOrModule}`, duration: '10:00', type: 'video', completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/eabjoioutk' },
           { id: `l${nextWeek}-2`, title: `Empathy actions for: ${titleOrModule}`, duration: '08:30', type: 'video', completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/i0iwga8cbj' },
           { id: `l${nextWeek}-3`, title: `Integration guide for: ${titleOrModule}`, duration: '05:00', type: 'video', completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/eabjoioutk' }
+=======
+          { id: `l${nextWeek}-1`, title: `Somatic foundations for: ${titleOrModule}`, duration: '10:00', type: 'video', completed: false, videoUrl: 'https://khwahishseth.wistia.com/folders/wx9zawl1d9' }
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
         ]
       };
       setModules(prev => [...prev, newM]);
@@ -1198,7 +1210,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     let parsedBody = template.body;
     
     // Parse variables
+<<<<<<< HEAD
     Object.entries(variables || {}).forEach(([k, v]) => {
+=======
+    Object.entries(variables).forEach(([k, v]) => {
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
       parsedBody = parsedBody.replace(new RegExp(`{{${k}}}`, 'g'), String(v));
     });
 

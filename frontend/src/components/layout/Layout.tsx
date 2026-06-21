@@ -7,6 +7,11 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useApp } from '@/context/AppContext';
 import Login from '@/pages/Login';
+<<<<<<< HEAD
+=======
+import PeriodicReflectionModal from '@/components/live/PeriodicReflectionModal';
+import InteractiveExplainerPop from '@/components/live/InteractiveExplainerPop';
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -22,9 +27,12 @@ export default function Layout({ children }: LayoutProps) {
   const [verificationPassword, setVerificationPassword] = React.useState('');
   const [verificationError, setVerificationError] = React.useState('');
   const [pendingAction, setPendingAction] = React.useState<(() => void) | null>(null);
+<<<<<<< HEAD
   const [verificationTitle, setVerificationTitle] = React.useState('Verify Parent Control');
   const [verificationDesc, setVerificationDesc] = React.useState('Please confirm your registered parent account password to switch back to parent dashboards.');
   const [verificationTargetPassword, setVerificationTargetPassword] = React.useState('password');
+=======
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
 
   // Notifications Interactive States
   const [isNotificationsOpen, setIsNotificationsOpen] = React.useState(false);
@@ -300,6 +308,7 @@ export default function Layout({ children }: LayoutProps) {
     setActiveTab('alerts');
   };
 
+<<<<<<< HEAD
   const promptVerification = (title: string, desc: string, targetPassword: string, onSuccess: () => void) => {
     setVerificationTitle(title);
     setVerificationDesc(desc);
@@ -308,10 +317,22 @@ export default function Layout({ children }: LayoutProps) {
     setVerificationPassword('');
     setVerificationError('');
     setPendingAction(() => onSuccess);
+=======
+  const promptParentAuthentication = (onSuccess: () => void) => {
+    if (currentUser && !currentUser.isStudent && !currentUser.isMentor) {
+      setIsVerifyingParent(true);
+      setVerificationPassword('');
+      setVerificationError('');
+      setPendingAction(() => onSuccess);
+    } else {
+      onSuccess();
+    }
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
   };
 
   const handleToggleStudentMode = () => {
     if (isStudentMode) {
+<<<<<<< HEAD
       promptVerification(
         'Verify Parent Control', 
         'Please confirm your registered parent account password to switch back to parent dashboards.', 
@@ -331,6 +352,15 @@ export default function Layout({ children }: LayoutProps) {
           navigate('/');
         }
       );
+=======
+      promptParentAuthentication(() => {
+        setIsStudentMode(false);
+        navigate('/');
+      });
+    } else {
+      setIsStudentMode(true);
+      navigate('/');
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
     }
   };
 
@@ -355,6 +385,10 @@ export default function Layout({ children }: LayoutProps) {
       { icon: Home, label: 'Dashboard', path: '/' },
       { icon: BookOpen, label: 'Learn', path: '/learn' },
       { icon: CheckSquare, label: 'Assignments', path: '/assignments' },
+<<<<<<< HEAD
+=======
+      { icon: Award, label: 'Milestones', path: '/milestones' },
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
       { icon: BarChart2, label: 'Progress', path: '/progress' },
       { icon: TrendingUp, label: 'Analytics', path: '/analytics' },
       { icon: User, label: 'Profile', path: '/profile' },
@@ -545,6 +579,7 @@ export default function Layout({ children }: LayoutProps) {
                   <button
                     onClick={() => {
                       if (isStudentMode) {
+<<<<<<< HEAD
                         promptVerification(
                           'Verify Parent Control', 
                           'Please confirm your registered parent account password to switch back to parent dashboards.', 
@@ -554,6 +589,12 @@ export default function Layout({ children }: LayoutProps) {
                             navigate('/');
                           }
                         );
+=======
+                        promptParentAuthentication(() => {
+                          setIsStudentMode(false);
+                          navigate('/');
+                        });
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
                       }
                     }}
                     className={cn(
@@ -568,6 +609,7 @@ export default function Layout({ children }: LayoutProps) {
                   <button
                     onClick={() => {
                       if (!isStudentMode) {
+<<<<<<< HEAD
                         promptVerification(
                           'Verify Student Control', 
                           'Please confirm child credentials with password "password" to enter Kids Space.', 
@@ -577,6 +619,10 @@ export default function Layout({ children }: LayoutProps) {
                             navigate('/');
                           }
                         );
+=======
+                        setIsStudentMode(true);
+                        navigate('/');
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
                       }
                     }}
                     className={cn(
@@ -1062,9 +1108,15 @@ export default function Layout({ children }: LayoutProps) {
                 <div className="inline-flex w-12 h-12 rounded-full bg-accent-sage/10 items-center justify-center text-accent-sage shrink-0 mx-auto text-xl shadow-inner border border-accent-sage/20">
                   🔒
                 </div>
+<<<<<<< HEAD
                 <h3 className="text-lg font-serif font-black text-stone-850">{verificationTitle}</h3>
                 <p className="text-xs text-stone-500 font-semibold px-2">
                   {verificationDesc}
+=======
+                <h3 className="text-lg font-serif font-black text-stone-850">Verify Parent Control</h3>
+                <p className="text-xs text-stone-500 font-semibold px-2">
+                  Please confirm your registered parent account password to switch back to parent dashboards.
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
                 </p>
               </div>
 
@@ -1075,14 +1127,23 @@ export default function Layout({ children }: LayoutProps) {
                     setVerificationError('Password cannot be empty.');
                     return;
                   }
+<<<<<<< HEAD
                   const correctPassword = verificationTargetPassword || currentUser?.password || 'password';
                   if (verificationPassword === correctPassword || verificationPassword === 'password' || verificationPassword === 'admin') {
+=======
+                  const correctPassword = currentUser?.password || 'password';
+                  if (verificationPassword === correctPassword || verificationPassword === 'admin') {
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
                     setIsVerifyingParent(false);
                     if (pendingAction) {
                       pendingAction();
                     }
                   } else {
+<<<<<<< HEAD
                     setVerificationError('Incorrect password. Please try again.');
+=======
+                    setVerificationError('Incorrect parent password. Please try again.');
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
                   }
                 }}
                 className="space-y-4"
@@ -1128,6 +1189,13 @@ export default function Layout({ children }: LayoutProps) {
       </AnimatePresence>
       
       {/* Dynamic 3-day Word-Limit Self Reflection Popup */}
+<<<<<<< HEAD
+=======
+      <PeriodicReflectionModal />
+      
+      {/* Dynamic Universal Button Explanation Popup */}
+      <InteractiveExplainerPop />
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
     </div>
   );
 }

@@ -240,7 +240,12 @@ export default function Progress() {
                 { label: 'Reflection Journal', state: ckReflection, setter: setOverrideReflectionJournal },
                 { label: 'Current Streak', state: ckStreak, setter: setOverrideCurrentStreak },
                 { label: 'Brownie Points Balance', state: ckPoints, setter: setOverrideBrowniePoints },
+<<<<<<< HEAD
                 { label: 'Badges & Achievements', state: ckBadges, setter: setOverrideBadges }
+=======
+                { label: 'Badges & Achievements', state: ckBadges, setter: setOverrideBadges },
+                { label: 'Next Milestone', state: ckMilestone, setter: setOverrideNextMilestone }
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
               ].map((item, idx) => (
                 <button
                   key={idx}
@@ -718,6 +723,10 @@ export default function Progress() {
               {[
                 { text: 'Keep up the great work!', desc: 'You completed your core modular lessons perfectly. Keep studying!', link: '/learn', c: 'text-emerald-700 bg-emerald-50 border-emerald-100' },
                 { text: 'Try to maintain your reflection streak', desc: 'Consistency builds safety. Fill out today\'s reflection journal prompt.', link: '/learn', c: 'text-[#009473] bg-teal-50/50 border-teal-100' },
+<<<<<<< HEAD
+=======
+                { text: 'You are one step away from next milestone', desc: 'Claim your active quest badges on the Quest Board below to grab XP!', link: '#quests', c: 'text-amber-800 bg-amber-50/55 border-amber-100' },
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
                 { text: 'Complete 2 more tasks to earn weekly bonus', desc: 'Finish checking off active co-regulation steps in the Child Wellness portal.', link: '/studentspace', c: 'text-blue-700 bg-blue-50/50 border-blue-100' }
               ].map((rec, recIdx) => (
                 <div key={recIdx} className={cn("p-3 rounded-2xl border text-xs space-y-1 transition-all", rec.c)}>
