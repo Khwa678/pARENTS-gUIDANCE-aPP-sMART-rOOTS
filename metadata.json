@@ -1,0 +1,8 @@
+{
+  "name": "Remix Parent Guidance",
+  "description": "An emotionally intelligent LMS for parents: guided child development, emotional wellness, and behavior transformation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
