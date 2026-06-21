@@ -87,7 +87,15 @@ const LESSON_FALLBACK_VIDEOS: Record<string, string> = {
 export default function LessonView() {
   const { moduleId, lessonId } = useParams();
   const navigate = useNavigate();
+<<<<<<< HEAD
   const { modules, completeLesson, addReflection, reflections, currentUser } = useApp();
+=======
+<<<<<<< HEAD
+  const { modules, completeLesson, addReflection, reflections, currentUser } = useApp();
+=======
+  const { modules, completeLesson, addReflection, reflections } = useApp();
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
   const { showReinforcement } = useToast();
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -153,20 +161,44 @@ export default function LessonView() {
         urlObj.searchParams.set('autoplay', '0');
         urlObj.searchParams.set('rel', '0');
         urlObj.searchParams.set('controls', '1');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
         urlObj.searchParams.set('enablejsapi', '1');
         return urlObj.toString();
       } catch (e) {
         return `${base}?autoplay=0&rel=0&controls=1&enablejsapi=1`;
+<<<<<<< HEAD
+=======
+=======
+        return urlObj.toString();
+      } catch (e) {
+        return `${base}?autoplay=0&rel=0&controls=1`;
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
       }
     } else {
       try {
         const urlObj = new URL(base);
         urlObj.searchParams.set('autoplay', '0');
         urlObj.searchParams.set('autoPlay', 'false');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
         urlObj.searchParams.set('plugin[postMessage][version]', '1');
         return urlObj.toString();
       } catch (e) {
         return `${base}?autoplay=0&autoPlay=false&plugin[postMessage][version]=1`;
+<<<<<<< HEAD
+=======
+=======
+        return urlObj.toString();
+      } catch (e) {
+        return `${base}?autoplay=0&autoPlay=false`;
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
       }
     }
   }, [lesson.videoUrl, lesson.id]);
@@ -176,6 +208,10 @@ export default function LessonView() {
   const [isMuted, setIsMuted] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState(1.0);
   const [showSpeedMenu, setShowSpeedMenu] = useState(false);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
   const [iframePlayingConfirmed, setIframePlayingConfirmed] = useState(false);
 
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -207,10 +243,33 @@ export default function LessonView() {
         setCurrentTime(prev => {
           const next = prev + 1;
           return next > totalDuration ? totalDuration : next;
+<<<<<<< HEAD
+=======
+=======
+
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  // Interval timer for visual simulation when playing
+  useEffect(() => {
+    let interval: any = null;
+    if (isPlaying) {
+      interval = setInterval(() => {
+        setCurrentTime(prev => {
+          if (prev >= totalDuration) {
+            setIsPlaying(false);
+            return 0;
+          }
+          return prev + 1;
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
         });
       }, 1000 / playbackSpeed);
     }
     return () => clearInterval(interval);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
   }, [isPlaying, iframePlayingConfirmed, totalDuration, playbackSpeed]);
 
   // Handle auto-completion when currentTime reaches totalDuration
@@ -374,6 +433,12 @@ export default function LessonView() {
     window.addEventListener('message', handleWistiaMessage);
     return () => window.removeEventListener('message', handleWistiaMessage);
   }, [lesson, totalDuration]);
+<<<<<<< HEAD
+=======
+=======
+  }, [isPlaying, totalDuration, playbackSpeed]);
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
 
   // Helper function to postMessage controls to YouTube & Wistia embeds
   const controlVideo = (command: string, ...args: any[]) => {
@@ -471,9 +536,18 @@ export default function LessonView() {
     if (e) e.stopPropagation();
     const nextPlay = !isPlaying;
     setIsPlaying(nextPlay);
+<<<<<<< HEAD
     if (!nextPlay) {
       setIframePlayingConfirmed(false);
     }
+=======
+<<<<<<< HEAD
+    if (!nextPlay) {
+      setIframePlayingConfirmed(false);
+    }
+=======
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
     controlVideo(nextPlay ? 'play' : 'pause');
   };
 
@@ -524,8 +598,16 @@ export default function LessonView() {
     }, 800);
   };
 
+<<<<<<< HEAD
   // No immediate auto-completion triggers. Completion occurs upon reaching the end of the video.
 
+=======
+<<<<<<< HEAD
+  // No immediate auto-completion triggers. Completion occurs upon reaching the end of the video.
+
+=======
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
   const handleSaveReflection = (e: React.FormEvent) => {
     e.preventDefault();
     if (!reflection) return;
@@ -679,6 +761,10 @@ export default function LessonView() {
           </p>
         </div>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
         {/* Automatic Completion Feedback Box */}
         {lesson.completed ? (
           <motion.div 
@@ -691,6 +777,30 @@ export default function LessonView() {
                 <span className="font-bold text-sm">Lesson Completed!</span>
              </div>
              <p className="text-xs text-stone-600 leading-normal">Awesome work! We registered your progress. This lesson has been ticked off and +20 points credited to your clinical dashboard.</p>
+<<<<<<< HEAD
+=======
+=======
+        {/* Primary completes button */}
+        {!lesson.completed ? (
+           <Button 
+             className="w-full h-14 rounded-2xl bg-stone-900 text-white hover:bg-stone-800 font-bold text-sm uppercase tracking-wider"
+             onClick={handleComplete}
+           >
+             Mark Complete <CheckCircle className="ml-2 w-4 h-4" />
+           </Button>
+        ) : (
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="p-6 bg-accent-sage/10 rounded-2xl border border-accent-sage/20 space-y-3"
+          >
+             <div className="flex items-center gap-2 text-accent-sage">
+                <CheckCircle2 className="w-5 h-5 fill-current" />
+                <span className="font-bold text-sm">Lesson Completed!</span>
+             </div>
+             <p className="text-xs text-stone-600 leading-normal">Awesome choice! This lesson is checked and +20 points credited.</p>
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
              <Button 
                variant="outline" 
                className="w-full rounded-xl border-accent-sage text-accent-sage hover:bg-accent-sage/5 text-xs font-bold"
@@ -699,6 +809,10 @@ export default function LessonView() {
                 Self-Reflect Reflection Prompt <ArrowRight className="ml-2 w-3.5 h-3.5" />
              </Button>
           </motion.div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
          ) : (
           <div className="p-6 bg-stone-900/[0.04] rounded-2xl border border-stone-200/80 space-y-4 font-sans select-none">
              <div className="flex items-center justify-between">
@@ -806,6 +920,11 @@ export default function LessonView() {
                </div>
              </div>
           </div>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
         )}
 
         {/* Guided Reflections submission Form */}

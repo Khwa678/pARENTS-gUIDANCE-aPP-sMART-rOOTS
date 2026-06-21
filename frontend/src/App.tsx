@@ -14,6 +14,12 @@ import Assignments from './pages/Assignments';
 import Progress from './pages/Progress';
 import Analytics from './pages/Analytics';
 import Profile from './pages/Profile';
+<<<<<<< HEAD
+=======
+
+import Milestones from './pages/Milestones';
+
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
 import Admin from './pages/Admin';
 import StudentSpace from './pages/StudentSpace';
 import MentorWorkspace from './pages/Mentor';
@@ -38,6 +44,11 @@ function AppRoutes() {
         <Route path="/assignments" element={<Assignments />} />
         <Route path="/progress" element={<Progress />} />
         <Route path="/analytics" element={<Analytics />} />
+<<<<<<< HEAD
+=======
+        <Route path="/milestones" element={<Milestones />} />
+
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
         <Route path="/profile" element={<Profile />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/student" element={<StudentSpace />} />

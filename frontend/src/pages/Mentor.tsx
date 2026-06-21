@@ -436,6 +436,10 @@ export default function MentorWorkspace() {
                             <div className="flex items-center justify-end gap-1.5 ml-auto">
                               <Button
                                 onClick={() => {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                                   sendSessionReminderWhatsApp(apt.id);
                                   setReminderSentId(apt.id);
                                   setTimeout(() => setReminderSentId(null), 3500);
@@ -444,6 +448,19 @@ export default function MentorWorkspace() {
                               >
                                 <MessageSquare className="w-3 h-3 text-amber-600" />
                                 {reminderSentId === apt.id ? '✓ Sent Live' : 'GMail Reminder'}
+<<<<<<< HEAD
+=======
+=======
+                                  sendSessionReminderWhatsApp(apt);
+                                  setReminderSentId(apt.id);
+                                  setTimeout(() => setReminderSentId(null), 3500);
+                                }}
+                                className="bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200/50 font-black text-[9px] uppercase tracking-wider py-1.5 px-3 h-auto rounded-full shadow-xs flex items-center gap-1 cursor-pointer"
+                              >
+                                <MessageSquare className="w-3 h-3 text-emerald-600" />
+                                {reminderSentId === apt.id ? '✓ Sent Live' : 'WhatsApp Reminder'}
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                               </Button>
                               <Button
                                 onClick={() => startVideoCallSimulator(apt)}

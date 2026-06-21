@@ -99,9 +99,21 @@ export default function Learn() {
       unlocked: true,
       progress: 0,
       lessons: [
+<<<<<<< HEAD
         { id: `l${nextWeekNumber}-1`, title: `Universal Foundations: ${title}`, duration: '12:30', type: 'video' as const, completed: false, videoUrl: selectedVideo.includes('wistia') ? selectedVideo : 'https://fast.wistia.net/embed/iframe/eabjoioutk' },
         { id: `l${nextWeekNumber}-2`, title: `Empathy-Driven Masterclass`, duration: '08:45', type: 'video' as const, completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/i0iwga8cbj' },
         { id: `l${nextWeekNumber}-3`, title: `Weekly Connections Review Game`, duration: '05:00', type: 'video' as const, completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/eabjoioutk' }
+=======
+<<<<<<< HEAD
+        { id: `l${nextWeekNumber}-1`, title: `Universal Foundations: ${title}`, duration: '12:30', type: 'video' as const, completed: false, videoUrl: selectedVideo.includes('wistia') ? selectedVideo : 'https://fast.wistia.net/embed/iframe/eabjoioutk' },
+        { id: `l${nextWeekNumber}-2`, title: `Empathy-Driven Masterclass`, duration: '08:45', type: 'video' as const, completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/i0iwga8cbj' },
+        { id: `l${nextWeekNumber}-3`, title: `Weekly Connections Review Game`, duration: '05:00', type: 'video' as const, completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/eabjoioutk' }
+=======
+        { id: `l${nextWeekNumber}-1`, title: `Universal Foundations: ${title}`, duration: '12:30', type: 'video' as const, completed: false, videoUrl: selectedVideo },
+        { id: `l${nextWeekNumber}-2`, title: `Empathy-Driven Masterclass`, duration: '08:45', type: 'video' as const, completed: false, videoUrl: 'https://khwahishseth.wistia.com/folders/wx9zawl1d9' },
+        { id: `l${nextWeekNumber}-3`, title: `Weekly Connections Review`, duration: '05:00', type: 'reflection' as const, completed: false }
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
       ]
     };
 
@@ -157,7 +169,15 @@ export default function Learn() {
             const activeParent = currentUser?.role === 'parent' 
               ? (parents?.find(p => p.phone === currentUser.phone) || currentUser)
               : currentUser;
+<<<<<<< HEAD
             const isUnlocked = currentUser?.role === 'admin' || currentUser?.isMentor || module.unlocked || (activeParent && (activeParent.unlockedWeeksList || []).includes(module.week));
+=======
+<<<<<<< HEAD
+            const isUnlocked = currentUser?.role === 'admin' || currentUser?.isMentor || module.unlocked || (activeParent && (activeParent.unlockedWeeksList || []).includes(module.week));
+=======
+            const isUnlocked = currentUser?.role === 'admin' || currentUser?.isMentor || (activeParent && (activeParent.unlockedWeeksList || []).includes(module.week));
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
 
             return (
               <motion.div 
@@ -302,6 +322,10 @@ export default function Learn() {
                            </div>
                          )}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                          {currentUser?.role === 'admin' && (
                            <div className="p-4 bg-accent-warm/5 rounded-2xl border border-accent-warm/10">
                               <p className="text-[11px] text-stone-500 leading-normal">
@@ -309,6 +333,16 @@ export default function Learn() {
                               </p>
                            </div>
                          )}
+<<<<<<< HEAD
+=======
+=======
+                         <div className="p-4 bg-accent-warm/5 rounded-2xl border border-accent-warm/10">
+                            <p className="text-[11px] text-stone-500 leading-normal">
+                              Unlock this week instantly using the option above or via the <Link to="/admin" className="font-extrabold text-accent-warm underline">Admin panel</Link>.
+                            </p>
+                         </div>
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                       </div>
                     )}
                   </div>
@@ -317,6 +351,10 @@ export default function Learn() {
             );
           })}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
           {/* Locked future indicator - Enabled for Admin and passive lock card for Parents */}
           {currentUser?.role === 'admin' ? (
             <motion.div 
@@ -355,6 +393,30 @@ export default function Learn() {
                </span>
             </div>
           )}
+<<<<<<< HEAD
+=======
+=======
+          {/* Locked future indicator - Now Interactive Dynamic Pathway Builder */}
+          <motion.div 
+            whileHover={{ scale: 1.02 }}
+            onClick={() => setShowGenerator(true)}
+            className="flex flex-col items-center justify-center gap-4 py-10 px-6 rounded-[2.5rem] border-2 border-dashed border-stone-300 hover:border-accent-sage bg-stone-50/50 hover:bg-stone-50/90 transition-all cursor-pointer select-none max-w-sm mx-auto shadow-sm"
+          >
+             <div className="w-16 h-16 rounded-full bg-accent-sage/10 text-accent-sage flex items-center justify-center animate-pulse">
+                <Star className="w-7 h-7 fill-current" />
+             </div>
+             <div className="text-center space-y-1">
+                <h4 className="text-lg font-serif text-stone-850">Explore Coming Soon Weeks</h4>
+                <p className="text-stone-500 text-xs px-4">
+                  All previous contents unlocked? Click here to dynamically generate and explore Week {modules.length + 1} customized path with new videos and assignments!
+                </p>
+             </div>
+             <span className="text-[10px] bg-accent-sage text-stone-900 px-3.5 py-1.5 rounded-full font-bold uppercase tracking-widest mt-2">
+                🔓 Click to Unlock More
+              </span>
+          </motion.div>
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
         </div>
       </div>
 

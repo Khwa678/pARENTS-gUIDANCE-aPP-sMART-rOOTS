@@ -544,18 +544,42 @@ export default function Profile() {
           <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-stone-400 px-2 tracking-widest">Preferences</h3>
           <Card className="border border-stone-150 shadow-sm overflow-hidden rounded-[2rem] bg-white p-1">
             <div className="divide-y divide-stone-50">
+<<<<<<< HEAD
               {/* GMail / Email notifications row */}
+=======
+<<<<<<< HEAD
+              {/* GMail / Email notifications row */}
+=======
+              
+              {/* WhatsApp notifications row */}
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
               <div className="transition-all">
                 <div 
                   onClick={() => setExpandedSection(expandedSection === 'whatsapp' ? null : 'whatsapp')}
                   className="flex items-center gap-4 p-5 hover:bg-stone-50 transition-all cursor-pointer group"
                 >
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                   <div className="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-500 group-hover:text-amber-500 transition-colors">
                      <Bell className="w-5 h-5" />
                   </div>
                   <div className="flex-1">
                     <span className="font-semibold text-stone-800 text-xs block font-serif">GMail / Email Notifications</span>
                     <span className="text-[10px] text-stone-400 font-mono">Gateway: {notificationProvider || 'Google SMTP'}</span>
+<<<<<<< HEAD
+=======
+=======
+                  <div className="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-500 group-hover:text-emerald-500 transition-colors">
+                     <Bell className="w-5 h-5" />
+                  </div>
+                  <div className="flex-1">
+                    <span className="font-semibold text-stone-800 text-xs block">WhatsApp Notifications</span>
+                    <span className="text-[10px] text-stone-400 font-mono">Gateway: {notificationProvider || 'Twilio'}</span>
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                   </div>
                   <span className={cn(
                     "text-[10px] font-mono px-3 py-1 rounded-full font-bold transition-colors",
@@ -563,7 +587,15 @@ export default function Profile() {
                       ? "bg-emerald-50 text-emerald-800 border border-emerald-100" 
                       : "bg-stone-100 text-stone-500 border border-stone-150"
                   )}>
+<<<<<<< HEAD
                     {isWhatsAppActive ? "🟢 SMTP Active" : "⚪ Paused OFF"}
+=======
+<<<<<<< HEAD
+                    {isWhatsAppActive ? "🟢 SMTP Active" : "⚪ Paused OFF"}
+=======
+                    {isWhatsAppActive ? "🟢 Active ON" : "⚪ Paused OFF"}
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                   </span>
                   <ChevronRight className={cn("w-4 h-4 text-stone-300 group-hover:translate-x-1 transition-transform", expandedSection === 'whatsapp' && "rotate-90 text-stone-500")} />
                 </div>
@@ -571,6 +603,10 @@ export default function Profile() {
                 <AnimatePresence>
                   {expandedSection === 'whatsapp' && (
                     <motion.div
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                        initial={{ height: 0, opacity: 0 }}
                        animate={{ height: 'auto', opacity: 1 }}
                        exit={{ height: 0, opacity: 0 }}
@@ -584,6 +620,24 @@ export default function Profile() {
                       <div className="grid grid-cols-2 gap-3">
                         {['Google SMTP Client', 'OAuth Gmail Relay', 'SendGrid Standard', 'Amazon SES Premium'].map((provider) => {
                           const isSelected = (notificationProvider || 'Google SMTP Client') === provider;
+<<<<<<< HEAD
+=======
+=======
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden bg-stone-50/50 border-t border-stone-50 px-6 py-5 space-y-4"
+                    >
+                      <div className="space-y-1">
+                        <h4 className="text-xs font-bold text-stone-700 uppercase tracking-wide">Configured SMS Carrier Infrastructure Gateway</h4>
+                        <p className="text-[11px] text-stone-500 leading-relaxed">Choose which secure cellular cloud provider handles template SMS notifications sent to {phone || 'your phone link'}.</p>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3">
+                        {['Twilio', 'WhatsApp Cloud API', 'Gupshup Secure', 'Infobip Direct'].map((provider) => {
+                          const isSelected = (notificationProvider || 'Twilio') === provider;
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                           return (
                             <button
                               key={provider}
@@ -616,7 +670,15 @@ export default function Profile() {
                         <div className="space-y-0.5">
                           <h5 className="text-xs font-extrabold text-stone-800 uppercase tracking-wider flex items-center gap-1.5 text-emerald-800">
                             <span className={cn("w-2 h-2 rounded-full", isWhatsAppActive ? "bg-emerald-500 animate-ping" : "bg-stone-300")} />
+<<<<<<< HEAD
                             <span>GMail Notification Relay Service</span>
+=======
+<<<<<<< HEAD
+                            <span>GMail Notification Relay Service</span>
+=======
+                            <span>WhatsApp Notification Relay Service</span>
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                           </h5>
                           <p className="text-[10px] text-stone-550 leading-relaxed">
                             When active, updates on kid streaks and completed calendar tasks are delivered in real-time to your inbox at <strong className="font-mono text-stone-700 font-extrabold">{currentUser?.email || email || 'your email'}</strong> and mirrored to **khwahishseth@gmail.com**!
@@ -644,6 +706,10 @@ export default function Profile() {
                       </div>
 
                       <div className="flex items-center justify-between pt-2 border-t border-stone-100 gap-4">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                         <p className="text-[10px] text-stone-400 italic">Handshake records are logged inside the system instantly upon SMTP dispatch.</p>
                         <Button
                           type="button"
@@ -652,6 +718,23 @@ export default function Profile() {
 
                             const emailTo = currentUser?.email || email || 'khwahishseth@gmail.com';
                             const handshakeText = `Dear ${currentUser?.name || name || 'Parent Guest'},\n\nThis is a real-time system handshake from MindBloom Parent Guidance.\n\nYour GMail / Email Notification has been successfully turned ON! You are now set up to receive instant family connection updates.\n\nGateway Router: ${notificationProvider || 'Google SMTP Client'}\nRecipient: ${emailTo}\nStatus: Active 🟢\nTimestamp: ${new Date().toLocaleString()}\n\nBreathe slow and stay tuned!`;
+<<<<<<< HEAD
+=======
+=======
+                        <p className="text-[10px] text-stone-400 italic">Connected devices are security-logged immediately upon transmission handshake.</p>
+                        <Button
+                          type="button"
+                          onClick={() => {
+                            if (!phone) {
+                              alert("Please update your WhatsApp Phone Number inside credentials first.");
+                              return;
+                            }
+                            setPingStatus("connecting");
+
+                            const emailTo = currentUser?.email || email || 'khwahishseth@gmail.com';
+                            const handshakeText = `Dear ${currentUser?.name || name || 'Parent Guest'},\n\nThis is a real-time system handshake from MindBloom Parent Guidance.\n\nYour WhatsApp Notification has been successfully turned ON! You are now set up to receive instant family connection updates.\n\nGateway Gateway: ${notificationProvider || 'Twilio'}\nPhone Target: ${phone}\nStatus: Active 🟢\nTimestamp: ${new Date().toLocaleString()}\n\nBreathe slow and stay tuned!`;
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
 
                             // 1. Fire real test email to email inbox
                             fetch("/api/send-email", {
@@ -659,7 +742,15 @@ export default function Profile() {
                               headers: { "Content-Type": "application/json" },
                               body: JSON.stringify({
                                 to: emailTo,
+<<<<<<< HEAD
                                 subject: `📧 GMAIL INSTANT NOTIFICATION Handshake Ping`,
+=======
+<<<<<<< HEAD
+                                subject: `📧 GMAIL INSTANT NOTIFICATION Handshake Ping`,
+=======
+                                subject: `📲 WHATSAPP INSTANT NOTIFICATION Handshake Ping`,
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                                 text: handshakeText
                               })
                             })
@@ -672,6 +763,10 @@ export default function Profile() {
                             })
                             .catch(err => console.error("SMTP error:", err));
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                             setTimeout(() => {
                               // Trigger log
                               const testLog = {
@@ -681,6 +776,53 @@ export default function Profile() {
                                 recipient: emailTo,
                                 payload: handshakeText,
                                 status: 'sent' as const
+<<<<<<< HEAD
+=======
+=======
+                            // 2. Dispatch real WhatsApp message backend call (Calls Twilio or CallMeBot)
+                            fetch("/api/send-whatsapp", {
+                              method: "POST",
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify({
+                                to: phone,
+                                text: handshakeText,
+                                provider: notificationProvider,
+                                apiKey: localStorage.getItem('parent_guidance_notif_key') || ''
+                              })
+                            })
+                            .then(r => r.json())
+                            .then(data => console.log("WhatsApp dispatch processed:", data))
+                            .catch(err => console.error("WhatsApp dispatch error:", err));
+
+                            // 3. Dispatch real Telegram message backend call if configured
+                            const activeChatId = currentUser?.telegramChatId || telegramChatId;
+                            if (activeChatId && activeChatId.trim()) {
+                              fetch("/api/send-telegram", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                  chatId: activeChatId.trim(),
+                                  text: `<b>🤖 MindBloom Safety Handshake:</b>\n\nDear Parent <b>${currentUser?.name || name || 'Parent Guest'}</b>,\n\nYour Telegram Notification is successfully active! 🟢\n\nGateway Server Status: Online\nTimestamp: ${new Date().toLocaleString()}\n\nBreathe slow and stay tuned!`
+                                })
+                              })
+                              .then(r => r.json())
+                              .then(data => console.log("Telegram dispatch processed:", data))
+                              .catch(err => console.error("Telegram dispatch error:", err));
+                            }
+
+                            setTimeout(() => {
+                              // Trigger SMS log
+                              const alertMsg = `🔄 [TEST SYSTEM HANDSHAKE] Connection with the ${notificationProvider || 'Twilio'} cellular gateway has passed security compliance validations. Active number: ${phone}.`;
+                              const testLog = {
+                                id: 'test_wt_log_' + Date.now(),
+                                timestamp: new Date().toLocaleString(),
+                                templateName: 'Security Channel Verification Ping',
+                                recipient: phone,
+                                payload: handshakeText,
+                                status: 'sent' as const,
+                                waLink: `https://wa.me/${phone.replace(/\D/g, "")}?text=${encodeURIComponent(handshakeText)}`
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                               };
                               // Add to notification logs list
                               const updatedLogs = [testLog, ...notificationLogs];
@@ -698,23 +840,61 @@ export default function Profile() {
                           disabled={pingStatus === 'connecting'}
                           className="rounded-full bg-stone-900 hover:bg-stone-850 h-9 font-bold text-white text-[10px] uppercase tracking-wider px-4 shrink-0 transition-transform hover:scale-[1.02]"
                         >
+<<<<<<< HEAD
                           {pingStatus === 'connecting' ? 'Pinging...' : pingStatus === 'sent' ? '✓ Email Sent' : '📧 Send Live Test Email'}
+=======
+<<<<<<< HEAD
+                          {pingStatus === 'connecting' ? 'Pinging...' : pingStatus === 'sent' ? '✓ Email Sent' : '📧 Send Live Test Email'}
+=======
+                          {pingStatus === 'connecting' ? 'Pinging...' : pingStatus === 'sent' ? '✓ Dispatched Live' : '📲 Send Live Test Ping'}
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                         </Button>
                       </div>
 
                       {pingStatus === 'sent' && (
                         <div className="space-y-2 mt-2">
                           <p className="text-[10px] text-emerald-600 font-bold bg-emerald-50 p-2.5 rounded-lg border border-emerald-100 flex items-center gap-1.5 font-mono">
+<<<<<<< HEAD
                             ✓ Handshake email dispatched successfully! A copy of this alert has been sent to {currentUser?.email || email || 'khwahishseth@gmail.com'}!
                           </p>
+=======
+<<<<<<< HEAD
+                            ✓ Handshake email dispatched successfully! A copy of this alert has been sent to {currentUser?.email || email || 'khwahishseth@gmail.com'}!
+                          </p>
+=======
+                            ✓ Handshake signal sent! A copy of this alert has also been dispatched to your email inbox!
+                          </p>
+                          <a
+                            href={`https://wa.me/${phone.replace(/\D/g, "")}?text=${encodeURIComponent(`Dear ${currentUser?.name || name || 'Parent Guest'},\n\n This is a real-time system handshake from MindBloom Parent Guidance.\n\nYour WhatsApp Notification has been successfully turned ON! 🟢`)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2 w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-md cursor-pointer text-center font-sans"
+                          >
+                            📲 Open Real WhatsApp Instantly to +{phone.replace(/\D/g, "")}
+                          </a>
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                           {latestEmailPreview && (
                             <a
                               href={latestEmailPreview}
                               target="_blank"
                               rel="noopener noreferrer"
+<<<<<<< HEAD
                               className="inline-flex items-center justify-center gap-2 w-full py-3 bg-stone-900 hover:bg-stone-850 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-md cursor-pointer text-center font-mono"
                             >
                               📧 Read Dispatched GMail Preview (Ethereal / Mailtrap Sandbox)
+=======
+<<<<<<< HEAD
+                              className="inline-flex items-center justify-center gap-2 w-full py-3 bg-stone-900 hover:bg-stone-850 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-md cursor-pointer text-center font-mono"
+                            >
+                              📧 Read Dispatched GMail Preview (Ethereal / Mailtrap Sandbox)
+=======
+                              className="inline-flex items-center justify-center gap-2 w-full py-3 bg-stone-900 hover:bg-stone-800 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-md cursor-pointer text-center font-mono"
+                            >
+                              📧 Read Dispatched Email (Sandbox)
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                             </a>
                           )}
                         </div>

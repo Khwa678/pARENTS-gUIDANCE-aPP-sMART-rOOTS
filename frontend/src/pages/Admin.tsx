@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
+=======
+<<<<<<< HEAD
+import { useNavigate } from 'react-router-dom';
+=======
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
 import { motion } from 'motion/react';
 import { useApp, ParentAccount, Student, DailyHabitTask, LiveSession } from '../context/AppContext';
 import { 
@@ -15,6 +22,10 @@ import SupabaseSyncDashboard from '../components/live/SupabaseSyncDashboard';
 import ServerHostControl from '../components/live/ServerHostControl';
 import { cn } from '@/lib/utils';
 import confetti from 'canvas-confetti';
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
 import { useToast } from '../context/ToastContext';
 
 export default function Admin() {
@@ -34,6 +45,13 @@ export default function Admin() {
   });
   const [adminPasswordInput, setAdminPasswordInput] = useState('');
   const [adminError, setAdminError] = useState('');
+<<<<<<< HEAD
+=======
+=======
+
+export default function Admin() {
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
   const {
     parents, setParents,
     students, setStudents,
@@ -57,6 +75,10 @@ export default function Admin() {
     reflections
   } = useApp();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
   const handleAdminVerify = (e: React.FormEvent) => {
     e.preventDefault();
     if (adminPasswordInput === 'password') {
@@ -134,6 +156,11 @@ export default function Admin() {
     );
   }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
   // Active Admin Section / Sidebar tab
   const [activeTab, setActiveTab] = useState('dashboard');
   const [adminSearch, setAdminSearch] = useState('');
@@ -215,6 +242,10 @@ export default function Admin() {
   const [videoNewWeekTitle, setVideoNewWeekTitle] = useState('');
   const [videoNewWeekDesc, setVideoNewWeekDesc] = useState('');
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
   // Dynamic curriculum editing states
   const [editingModuleId, setEditingModuleId] = useState<string | null>(null);
   const [editingModuleTitle, setEditingModuleTitle] = useState('');
@@ -226,6 +257,11 @@ export default function Admin() {
   const [editingLessonDuration, setEditingLessonDuration] = useState('');
   const [editingLessonWistiaId, setEditingLessonWistiaId] = useState('');
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
   // Interactive calculators
   const [calcAction, setCalcAction] = useState('daily_task');
   const [calcScore, setCalcScore] = useState(0);
@@ -258,10 +294,24 @@ export default function Admin() {
   };
 
   const handleDeleteTask = (taskId: string) => {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
     const updated = dailyTasks.filter(t => t.id !== taskId);
     setDailyTasks(updated);
     localStorage.setItem('parent_guidance_daily_tasks', JSON.stringify(updated));
     showToast("Co-regulation task deleted from registry.", "info", "🗑️ Task Deleted");
+<<<<<<< HEAD
+=======
+=======
+    if (confirm("Are you sure you want to delete this daily task?")) {
+      const updated = dailyTasks.filter(t => t.id !== taskId);
+      setDailyTasks(updated);
+      localStorage.setItem('parent_guidance_daily_tasks', JSON.stringify(updated));
+    }
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
   };
 
   // Function: generate export previews
@@ -721,10 +771,23 @@ export default function Admin() {
                           defaultChecked={true}
                           className="rounded border-stone-300 text-stone-900 focus:ring-stone-900"
                         />
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                         <label htmlFor="notify-parents" className="text-xs font-bold text-stone-700">Notify Parents via GMail / Email</label>
                       </div>
                       <p className="text-[10px] text-stone-550 leading-normal">
                         Instantly triggers outbound SMTP GMail simulation to parents assigned with kids tagged as '{newVideoTag || "Anger"}'.
+<<<<<<< HEAD
+=======
+=======
+                        <label htmlFor="notify-parents" className="text-xs font-bold text-stone-700">Notify Parents via WhatsApp</label>
+                      </div>
+                      <p className="text-[10px] text-stone-550 leading-normal">
+                        Instantly triggers outbound WhatsApp simulation to parents assigned with kids tagged as '{newVideoTag || "Anger"}'.
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                       </p>
                     </div>
 
@@ -759,8 +822,18 @@ export default function Admin() {
                           progress: 0,
                           lessons: [
                             firstLesson,
+<<<<<<< HEAD
                             { id: `l${targetWeekNum}-2`, title: 'Somatic Focus Clinical Meditation Video', duration: '10:00', type: 'video' as const, completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/i0iwga8cbj' },
                             { id: `l${targetWeekNum}-3`, title: 'Milestone Reflection Video Guide', duration: '05:00', type: 'video' as const, completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/eabjoioutk' }
+=======
+<<<<<<< HEAD
+                            { id: `l${targetWeekNum}-2`, title: 'Somatic Focus Clinical Meditation Video', duration: '10:00', type: 'video' as const, completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/i0iwga8cbj' },
+                            { id: `l${targetWeekNum}-3`, title: 'Milestone Reflection Video Guide', duration: '05:00', type: 'video' as const, completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/eabjoioutk' }
+=======
+                            { id: `l${targetWeekNum}-2`, title: 'Somatic Focus Clinical Meditation', duration: '10:00', type: 'video' as const, completed: false, videoUrl: 'https://khwahishseth.wistia.com/folders/wx9zawl1d9' },
+                            { id: `l${targetWeekNum}-3`, title: 'Milestone Reflection Log', duration: '05:00', type: 'reflection' as const, completed: false }
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                           ]
                         };
 
@@ -775,8 +848,18 @@ export default function Admin() {
                         
                         const shouldNotify = (document.getElementById('notify-parents') as HTMLInputElement)?.checked;
                         if (shouldNotify) {
+<<<<<<< HEAD
                           sendTestWhatsApp('parent_jane@gmail.com', `Hi there! A brand new clinical lesson has been published: "${newVideoTitle}" is now unlocked for you on Week ${targetWeekNum}! Practice this co-regulation today.`);
                           logAdminAction('Outbound GMail Broadcast Warning', `Dispatched SMTP e-mail alerts to parenthood community regarding unlocked lesson "${newVideoTitle}"`);
+=======
+<<<<<<< HEAD
+                          sendTestWhatsApp('parent_jane@gmail.com', `Hi there! A brand new clinical lesson has been published: "${newVideoTitle}" is now unlocked for you on Week ${targetWeekNum}! Practice this co-regulation today.`);
+                          logAdminAction('Outbound GMail Broadcast Warning', `Dispatched SMTP e-mail alerts to parenthood community regarding unlocked lesson "${newVideoTitle}"`);
+=======
+                          sendTestWhatsApp('+15550199', `Hi there! A brand new clinical lesson has been published: "${newVideoTitle}" is now unlocked for you on Week ${targetWeekNum}! Practice this co-regulation today.`);
+                          logAdminAction('Outbound Broadcast Warning', `Dispatched alerts to parenthood community regarding unlocked lesson "${newVideoTitle}"`);
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                         }
 
                         logAdminAction('Curriculum Added', `Created Curriculum Week ${targetWeekNum}: "${videoNewWeekTitle}" with lesson "${newVideoTitle}"`);
@@ -820,8 +903,18 @@ export default function Admin() {
 
                         const shouldNotify = (document.getElementById('notify-parents') as HTMLInputElement)?.checked;
                         if (shouldNotify) {
+<<<<<<< HEAD
                           sendTestWhatsApp('parent_jane@gmail.com', `Hi there! A brand new clinical lesson has been published: "${newVideoTitle}" is now unlocked for you on Week ${targetModule?.week || 1}! Practice this co-regulation today.`);
                           logAdminAction('Outbound GMail Broadcast Warning', `Dispatched e-mail alerts to parenthood community regarding unlocked lesson "${newVideoTitle}"`);
+=======
+<<<<<<< HEAD
+                          sendTestWhatsApp('parent_jane@gmail.com', `Hi there! A brand new clinical lesson has been published: "${newVideoTitle}" is now unlocked for you on Week ${targetModule?.week || 1}! Practice this co-regulation today.`);
+                          logAdminAction('Outbound GMail Broadcast Warning', `Dispatched e-mail alerts to parenthood community regarding unlocked lesson "${newVideoTitle}"`);
+=======
+                          sendTestWhatsApp('+15550199', `Hi there! A brand new clinical lesson has been published: "${newVideoTitle}" is now unlocked for you on Week ${targetModule?.week || 1}! Practice this co-regulation today.`);
+                          logAdminAction('Outbound Broadcast Warning', `Dispatched alerts to parenthood community regarding unlocked lesson "${newVideoTitle}"`);
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                         }
 
                         logAdminAction('Add Lesson Content', `Created and linked "${newVideoTitle}" under module "${targetTitle}"`);
@@ -841,6 +934,10 @@ export default function Admin() {
                   </div>
                   
                   <div className="space-y-4 max-h-[550px] overflow-y-auto pr-1">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                     {modules.map((m, idx) => {
                       const isEditingThisModule = editingModuleId === m.id;
                       return (
@@ -1108,6 +1205,69 @@ export default function Admin() {
                         </div>
                       );
                     })}
+<<<<<<< HEAD
+=======
+=======
+                    {modules.map((m, idx) => (
+                      <div key={idx} className="p-4 bg-stone-50 rounded-2xl border border-stone-200/60 space-y-3">
+                        <div className="flex justify-between items-center border-b border-stone-200 pb-2">
+                          <div>
+                            <span className="bg-stone-200 text-stone-700 px-2 py-0.5 rounded text-[8px] font-bold uppercase font-mono mr-2">Week {m.week}</span>
+                            <strong className="font-sans font-bold text-sm text-stone-850">{m.title}</strong>
+                          </div>
+                          <span className="text-[10px] font-mono text-stone-405 font-bold">{(m.lessons || []).length} Lessons</span>
+                        </div>
+                        
+                        <p className="text-stone-400 text-[11px] leading-tight line-clamp-1">{m.description}</p>
+                        
+                        <div className="space-y-2">
+                          {(m.lessons || []).length === 0 ? (
+                            <p className="text-[10px] text-stone-400 font-bold italic">No video lessons uploaded in this module.</p>
+                          ) : (
+                            m.lessons.map((lesson: any) => (
+                              <div key={lesson.id} className="p-2.5 bg-white rounded-xl border border-stone-150 flex items-center justify-between text-xs transition-all hover:shadow-xs">
+                                <div className="space-y-0.5 min-w-0 pr-4">
+                                  <div className="flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 bg-stone-500 rounded-full shrink-0" />
+                                    <span className="font-bold text-stone-800 truncate">{lesson.title}</span>
+                                  </div>
+                                  <div className="flex items-center gap-2 text-[10px] text-stone-400 font-mono">
+                                    <span>⏱️ {lesson.duration || '5 mins'}</span>
+                                    <span>•</span>
+                                    <span className="bg-stone-100 rounded text-[9px] px-1 select-all font-sans text-stone-600">ID: {lesson.wistiaId || lesson.wistia_id || 'eabjoioutk'}</span>
+                                  </div>
+                                </div>
+
+                                <button
+                                  onClick={() => {
+                                    if (confirm(`Are you sure you want to delete lesson "${lesson.title}" from Week ${m.week}?`)) {
+                                      setModules(prev => {
+                                        return prev.map(mod => {
+                                          if (mod.id === m.id) {
+                                            return {
+                                              ...mod,
+                                              lessons: (mod.lessons || []).filter((l: any) => l.id !== lesson.id)
+                                            };
+                                          }
+                                          return mod;
+                                        });
+                                      });
+                                      logAdminAction('Delete Lesson Content', `Removed lesson "${lesson.title}" from module "${m.title}"`);
+                                    }
+                                  }}
+                                  className="p-1.5 rounded-lg text-stone-400 hover:text-red-500 hover:bg-red-50 transition"
+                                  title="Delete Lesson"
+                                >
+                                  <Trash className="w-3.5 h-3.5" />
+                                </button>
+                              </div>
+                            ))
+                          )}
+                        </div>
+                      </div>
+                    ))}
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                   </div>
                 </Card>
               </div>
@@ -1270,9 +1430,21 @@ export default function Admin() {
                         unlocked: false, // Created as locked by default, admin can unlock specifically
                         progress: 0,
                         lessons: [
+<<<<<<< HEAD
                           { id: `l${targetWeekNum}-1`, title: adminNewModuleVideoTitle || 'Introduction Lesson & Focus Area', duration: '12:00', type: 'video' as const, completed: false, videoUrl: adminNewModuleVideoId || 'https://fast.wistia.net/embed/iframe/eabjoioutk' },
                           { id: `l${targetWeekNum}-2`, title: 'Somatic Focus Clinical Meditation Video', duration: '10:00', type: 'video' as const, completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/i0iwga8cbj' },
                           { id: `l${targetWeekNum}-3`, title: 'Milestone Reflection Video Guide', duration: '05:00', type: 'video' as const, completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/eabjoioutk' }
+=======
+<<<<<<< HEAD
+                          { id: `l${targetWeekNum}-1`, title: adminNewModuleVideoTitle || 'Introduction Lesson & Focus Area', duration: '12:00', type: 'video' as const, completed: false, videoUrl: adminNewModuleVideoId || 'https://fast.wistia.net/embed/iframe/eabjoioutk' },
+                          { id: `l${targetWeekNum}-2`, title: 'Somatic Focus Clinical Meditation Video', duration: '10:00', type: 'video' as const, completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/i0iwga8cbj' },
+                          { id: `l${targetWeekNum}-3`, title: 'Milestone Reflection Video Guide', duration: '05:00', type: 'video' as const, completed: false, videoUrl: 'https://fast.wistia.net/embed/iframe/eabjoioutk' }
+=======
+                          { id: `l${targetWeekNum}-1`, title: adminNewModuleVideoTitle || 'Introduction Lesson & Focus Area', duration: '12:00', type: 'video' as const, completed: false, videoUrl: adminNewModuleVideoId || 'https://khwahishseth.wistia.com/folders/wx9zawl1d9' },
+                          { id: `l${targetWeekNum}-2`, title: 'Somatic Focus Clinical Meditation', duration: '10:00', type: 'video' as const, completed: false, videoUrl: 'https://khwahishseth.wistia.com/folders/wx9zawl1d9' },
+                          { id: `l${targetWeekNum}-3`, title: 'Milestone Reflection Log', duration: '05:00', type: 'reflection' as const, completed: false }
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                         ]
                       };
 
@@ -1706,8 +1878,18 @@ export default function Admin() {
                                         updatedList.push(m.week);
                                         updatedList.sort((a,b) => a-b);
                                       }
+<<<<<<< HEAD
                                       alert(`Success! Unlocked Week ${m.week} ("${m.title}") for parent cohort ${p.name}. Action notification sent via GMail!`);
                                       sendTestWhatsApp(p.email || 'parent_jane@gmail.com', `Clinical Announcement: Week ${m.week} content has been reviewed and UNLOCKED for you by your supervisor. Proceed to your assignments space!`);
+=======
+<<<<<<< HEAD
+                                      alert(`Success! Unlocked Week ${m.week} ("${m.title}") for parent cohort ${p.name}. Action notification sent via GMail!`);
+                                      sendTestWhatsApp(p.email || 'parent_jane@gmail.com', `Clinical Announcement: Week ${m.week} content has been reviewed and UNLOCKED for you by your supervisor. Proceed to your assignments space!`);
+=======
+                                      alert(`Success! Unlocked Week ${m.week} ("${m.title}") for parent cohort ${p.name}. Action notification sent!`);
+                                      sendTestWhatsApp(p.phone, `Clinical Announcement: Week ${m.week} content has been reviewed and UNLOCKED for you by your supervisor. Proceed to your assignments space!`);
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                                     }
 
                                     setParents(prev => prev.map(parent => parent.phone === p.phone ? { ...parent, unlockedWeeksList: updatedList } : parent));
@@ -1739,7 +1921,15 @@ export default function Admin() {
                 <Card className="p-6 bg-white rounded-3xl lg:col-span-2 space-y-4 shadow-sm border-none">
                   <h3 className="font-serif text-lg font-bold">Somatic Scoring Parameters Weighting</h3>
                   <div className="grid md:grid-cols-2 gap-4">
+<<<<<<< HEAD
                     {Object.entries(scoringRules || {}).map(([key, val]) => (
+=======
+<<<<<<< HEAD
+                    {Object.entries(scoringRules || {}).map(([key, val]) => (
+=======
+                    {Object.entries(scoringRules).map(([key, val]) => (
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                       <div key={key} className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-stone-400 capitalize">{key.replace(/([A-Z])/g, ' $1')}</label>
                         <input 
@@ -1843,8 +2033,18 @@ export default function Admin() {
                             <Button 
                               size="sm" 
                               onClick={async () => {
+<<<<<<< HEAD
                                 sendTestWhatsApp('parent_jane@gmail.com', `Clinical Recovery Alert: Emergency intervention needed for ${child.name}. We recommend checking your co-regulation exercises now.`);
                                 alert(`Success: Dispatched clinical GMail trigger recovery nudge to parent registered for ${child.name}!`);
+=======
+<<<<<<< HEAD
+                                sendTestWhatsApp('parent_jane@gmail.com', `Clinical Recovery Alert: Emergency intervention needed for ${child.name}. We recommend checking your co-regulation exercises now.`);
+                                alert(`Success: Dispatched clinical GMail trigger recovery nudge to parent registered for ${child.name}!`);
+=======
+                                sendTestWhatsApp('w_stress_spike', child.parentPhone, { parent_name: child.name.split(' ')[0] + ' Parent', time: new Date().toLocaleTimeString(), module_title: child.concerns[0] || 'Co-regulation' });
+                                alert(`Success: Dispatched clinical WhatsApp trigger nudge to ${child.parentPhone} registered for ${child.name}!`);
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                               }} 
                               className="text-[10px] h-6 px-2 bg-red-50 text-red-700 border-red-100 hover:bg-red-100 font-extrabold"
                             >
@@ -1863,6 +2063,10 @@ export default function Admin() {
           })()}
 
           {/* SECTION 11: Leaderboard */}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
           {activeTab === 'leaderboard' && (() => {
             // Function to dynamically calculate scores
             const getParentScore = (p: ParentAccount) => {
@@ -1947,12 +2151,50 @@ export default function Admin() {
               </div>
             );
           })()}
+<<<<<<< HEAD
+=======
+=======
+          {activeTab === 'leaderboard' && (
+            <div className="space-y-6">
+              <Card className="p-6 bg-white rounded-3xl space-y-4 shadow-sm border-none">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-serif text-lg font-bold">Cohort Engagement Leaderboards</h3>
+                  <span className="text-xs bg-stone-100 text-stone-500 px-3 py-1 rounded-full font-bold">Filter: Anger Management (June 2026)</span>
+                </div>
+
+                <div className="space-y-3 max-w-xl">
+                  {[
+                    { rank: '🥇 Rank 1', name: 'Jane Cooper', points: 345, badge: 'Somatic Pioneer', color: 'bg-amber-100 text-amber-800' },
+                    { rank: '🥈 Rank 2', name: 'Devon Webb', points: 310, badge: 'Calm Catalyst', color: 'bg-stone-100 text-stone-800' },
+                    { rank: '🥉 Rank 3', name: 'Esther Howard', points: 295, badge: 'Anchor Champion', color: 'bg-orange-50 text-orange-850' }
+                  ].map((lead, idx) => (
+                    <div key={idx} className="p-4 bg-stone-50 rounded-2xl flex items-center justify-between gap-4 border">
+                      <div className="flex items-center gap-3">
+                        <span className={cn("px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider", lead.color)}>{lead.rank}</span>
+                        <div>
+                          <p className="font-bold text-sm text-stone-850">{lead.name}</p>
+                          <p className="text-[10px] text-stone-400 font-bold uppercase">{lead.badge}</p>
+                        </div>
+                      </div>
+                      <span className="text-sm font-serif font-black">{lead.points} stars accumulated</span>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+          )}
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
 
           {/* SECTION 12: Alerts & Notifications */}
           {activeTab === 'alerts' && (
             <div className="space-y-6">
               <div className="grid lg:grid-cols-3 gap-6 items-start">
                 <Card className="p-6 bg-white rounded-3xl space-y-4 shadow-sm border-none">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                   <h3 className="font-serif text-base font-bold">Simulate Custom GMail / Email Alert</h3>
                   <div className="space-y-3">
                     <input type="text" placeholder="Recipient GMail / Email" value={newTemplatePhone} onChange={e => setNewTemplatePhone(e.target.value)} className="w-full text-xs p-3 rounded-lg bg-stone-50 border" />
@@ -1981,6 +2223,38 @@ export default function Admin() {
 
                       alert('Clinical GMail alert triggered & dispatched live! Verify dispatch logs below.');
                     }} className="w-full bg-stone-900 text-white text-xs h-10 rounded-lg cursor-pointer">Trigger GMail Alert</Button>
+<<<<<<< HEAD
+=======
+=======
+                  <h3 className="font-serif text-base font-bold">Simulate Custom Alert</h3>
+                  <div className="space-y-3">
+                    <input type="text" placeholder="Recipient Phone" value={newTemplatePhone} onChange={e => setNewTemplatePhone(e.target.value)} className="w-full text-xs p-3 rounded-lg bg-stone-50 border" />
+                    <input type="text" placeholder="Parent Name" value={newTemplateParent} onChange={e => setNewTemplateParent(e.target.value)} className="w-full text-xs p-3 rounded-lg bg-stone-50 border" />
+                    <Button onClick={async () => {
+                      // Trigger context logger
+                      sendTestWhatsApp('w_stress_spike', newTemplatePhone, { parent_name: newTemplateParent, time: new Date().toLocaleTimeString(), module_title: 'Co-regulation Outbursts' });
+                      
+                      // Also trigger actual server API call for WhatsApp (will try sandbox/bot or fallback gracefully)
+                      try {
+                        const res = await fetch('/api/send-whatsapp', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({
+                            phone: newTemplatePhone,
+                            parentName: newTemplateParent,
+                            templateId: 'w_stress_spike'
+                          })
+                        });
+                        const data = await res.json();
+                        console.log('[PUSH ALERT DISPATCH] Server Response:', data);
+                      } catch (e) {
+                        console.warn('[PUSH ALERT DISPATCH] Server call failed:', e);
+                      }
+
+                      alert('Stress escalation alert triggered & dispatched live! Verify dispatch logs below.');
+                    }} className="w-full bg-stone-900 text-white text-xs h-10 rounded-lg">Trigger WhatsApp Alert</Button>
+>>>>>>> 8f3d1595f83be8a19abaeebff5b3d460ca842f31
+>>>>>>> 545db1ab596b815415ee19120be509248701a9b5
                   </div>
                 </Card>
 
